@@ -109,6 +109,13 @@ button.red-button:active {
     border: 1px solid #8B0000;
 }
 
+/* no data, no button */
+button.red-button:disabled {
+    background: #ccc;
+    color: #000;
+    border: 1px solid #ccc;
+}
+
 div.option {
 	display: inline-block;
 	width: 200px;

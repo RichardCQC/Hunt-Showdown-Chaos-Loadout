@@ -10,6 +10,8 @@
   <script src="js/script.js"></script>
   <script>
     window.onload = function() {
+      /* TODO: Block Generate until data is loaded. */
+      loadExternalData();
       setParameterValues();
       activateEvents();
     }
@@ -130,6 +132,8 @@
         </form>
         </div>
   	</div>
+        /// For Testing purposes only ///
+        <input type="file" id="file-input"/>
   </div>
 </body>
 </html>
