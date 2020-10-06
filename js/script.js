@@ -3,14 +3,6 @@ var rank = 100;
 var maxSize = 4;
 var generateWeapon1 = true;
 var generateWeapon2 = true;
-var generateTool1 = true;
-var generateTool2 = true;
-var generateTool3 = true;
-var generateTool4 = true;
-var generateConsumable1 = true;
-var generateConsumable2 = true;
-var generateConsumable3 = true;
-var generateConsumable4 = true;
 var allowDualWield = true;
 var allowQuatermaster = false;
 var allowDuplicateWeapons = true;
@@ -18,275 +10,77 @@ var allowDuplicateWeapons = true;
 //Variables for result
 var weapon1 = null;
 var weapon2 = null;
-var tool1 = null;
-var tool2 = null;
-var tool3 = null;
-var tool4 = null;
-var consumable1 = null;
-var consumable2 = null;
-var consumable3 = null;
-var consumable4 = null;
+
+// store the actual values of tools/consumables
+var store = {
+	tools: [null, null, null, null],
+	consumables: [null, null, null, null],
+	weapons: [null, null]
+};
+
+// store which slots need updating
+var updateStack = {
+	tools: [],
+	consumables: [],
+	weapons: [] /* not used, but needed for checkboxes */
+};
+
+// URLs for data purposes.
+var externalData = {
+	tools: "https://raw.githubusercontent.com/HackedPixels/Hunt-Showdown-Chaos-Loadout/1c6261cfb95c3678c41758f5d095f897598e9827/data/tools.json",
+	consumables: "https://raw.githubusercontent.com/HackedPixels/Hunt-Showdown-Chaos-Loadout/1c6261cfb95c3678c41758f5d095f897598e9827/data/consumables.json",
+	guns: "https://raw.githubusercontent.com/HackedPixels/Hunt-Showdown-Chaos-Loadout/0c8002cc94e2b3876a4b4d8f773b33ccdded82a9/js/guns.json"
+};
+
 var remainingSize = 0;
 
 //Data intialization
-var gunFamilies = new Array( 
-	new GunFamily(1, 2, new Array(
-			new Gun(3, false, "Winfield M1873C", 41, "img/winfieldc.jpg"),
-			new Gun(3, false,"Winfield M1873C Silencer", 55, "img/winfieldc_sup.jpg"),
-			new Gun(3, false, "Winfield M1873C Marksman", 56, "img/winfieldc_mark.jpg"),
-			new Gun(2, false, "Winfield M1873C Vandal", 35, "img/winfieldc_van.jpg"),
-			new Gun(2, false, "Winfield M1873C Vandal Deadeye", 45, "img/winfieldc_van_dead.jpg")
-		)
-	),
-	new GunFamily(1, 2, new Array(
-			new Gun(3, false, "Springfield 1866", 38, "img/springfield.jpg"),
-			new Gun(3, false, "Springfield 1866 Marksman", 73, "img/springfield_mark.jpg"),
-			new Gun(2, false, "Springfield 1866 Compact", 33, "img/springfield_com.jpg"),
-			new Gun(2, false, "Springfield 1866 Compact Striker", 56, "img/springfield_com_str.jpg"),
-			new Gun(2, false, "Springfield 1866 Compact Deadeye", 46, "img/springfield_com_dead.jpg")
-		)
-	),
-	new GunFamily(6, 3, new Array(
-			new Gun(3, false, "Vetterli 71 Karabiner", 105, "img/vetterli.jpg"),
-			new Gun(3, false, "Vetterli 71 Karabiner Deadeye", 155, "img/vetterli_dead.jpg"),
-			new Gun(3, false, "Vetterli 71 Karabiner Bayonet", 130, "img/vetterli_bay.jpg")
-		)
-	),
-	new GunFamily(16, 3, new Array(
-			new Gun(3, false, "Martini-Henry IC1", 122, "img/martini.jpg"),
-			new Gun(3, false, "Martini-Henry IC1 Deadeye", 145, "img/martini_dead.jpg"),
-			new Gun(3, false, "Martini-Henry IC1 Riposte", 164, "img/martini_rip.jpg"),
-			new Gun(3, false, "Martini-Henry IC1 Marksman", 173, "img/martini_mark.jpg")
-		)
-	),
-	new GunFamily(26, 3, new Array(
-			new Gun(3, false, "Sparks LRR", 130, "img/sparks.jpg"),
-			new Gun(3, false, "Sparks LRR Silencer", 150, "img/sparks_sup.jpg"),
-			new Gun(3, false, "Sparks LRR Sniper", 199, "img/sparks_snip.jpg")
-		)
-	),
-	new GunFamily(42, 3, new Array(
-			new Gun(3, false, "Winfield M1873", 75, "img/winfield.jpg"),
-			new Gun(3, false, "Winfield M1873 Aperture", 80, "img/winfield_ap.jpg"),
-			new Gun(3, false, "Winfield M1873 Talon", 100, "img/winfield_tal.jpg"),
-			new Gun(3, false, "Winfield M1873 Swift", 128, "img/winfield_swi.jpg")
-		)
-	),
-	new GunFamily(52, 3, new Array(
-			new Gun(3, false, "Lebel 1886", 397, "img/lebel.jpg"),
-			new Gun(3, false, "Lebel 1886 Talon", 422, "img/lebel_tal.jpg"),
-			new Gun(3, false, "Lebel 1886 Marksman", 437, "img/lebel_mark.jpg")
-		)
-	),
-	new GunFamily(72, 2, new Array(
-			new Gun(3, false, "Mosin-Nagant M1891", 490, "img/mosin.jpg"),
-			new Gun(2, false, "Mosin-Nagant M1891 Obrez", 290, "img/mosin_obr.jpg"),
-			new Gun(3, false, "Mosin-Nagant M1891 Bayonet", 540, "img/mosin_bay.jpg"),
-			new Gun(2, false, "Mosin-Nagant M1891 Obrez Mace", 310, "img/mosin_obr_mace.jpg"),
-			new Gun(3, false, "Mosin-Nagant M1891 Sniper", 550, "img/mosin_snip.jpg"),
-			new Gun(2, false, "Mosin-Nagant M1891 Obrez Drum", 350, "img/mosin_obr_drum.jpg"),
-			new Gun(3, false, "Mosin-Nagant M1891 Avtomat", 1250, "img/mosin_avto.jpg")
-		)
-	),
-	new GunFamily(88, 3, new Array(
-			new Gun(3, false, "Nitro Express Rifle", 1015, "img/nitro.jpg")
-		)
-	),
-	new GunFamily(1, 1, new Array(
-			new Gun(1, false, "Nagant M1895", 24, "img/nagant.jpg"),
-			new Gun(2, true, "Dual Nagant M1895", 48, "img/nagant_dual.jpg"),
-			new Gun(2, false, "Nagant M1895 Precision", 29, "img/nagant_prec.jpg"),
-			new Gun(1, false, "Nagant M1895 Silencer", 53, "img/nagant_sup.jpg"),
-			new Gun(2, true, "Dual Nagant M1895 Silencer", 106, "img/nagant_sup_dual.jpg"),
-			new Gun(2, false, "Nagant M1895 Deadeye", 42, "img/nagant_prec_dead.jpg")
-		)
-	),
-	new GunFamily(10, 1, new Array(
-			new Gun(1, false, "Caldwell Pax", 100, "img/pax.jpg"),
-			new Gun(2, true, "Dual Caldwell Pax", 200, "img/pax_dual.jpg"),
-			new Gun(1, false, "Caldwell Pax Claw", 125, "img/pax_claw.jpg"),
-			new Gun(2, true, "Dual Caldwell Pax Claw", 250, "img/pax_claw_dual.jpg")
-		)
-	),
-	new GunFamily(22, 1, new Array(
-			new Gun(1, false, "Caldwell Conversion Pistol", 26, "img/conversion.jpg"),
-			new Gun(2, true, "Dual Caldwell Conversion Pistol", 52, "img/conversion_dual.jpg"),
-			new Gun(1, false, "Caldwell Conversion Chain Pistol", 50, "img/conversion_chain.jpg"),
-			new Gun(2, true, "Dual Caldwell Conversion Chain Pistol", 100, "img/conversion_chain_dual.jpg"),
-			new Gun(1, false, "Caldwell Conversion Upercut", 275, "img/conversion_up.jpg"),
-			new Gun(2, true, "Dual Caldwell Conversion Upercut", 550, "img/conversion_up_dual.jpg")
-		)
-	),
-	new GunFamily(30, 1, new Array(
-			new Gun(1, false, "Bornheim No. 3", 201, "img/bornheim.jpg"),
-			new Gun(2, true, "Dual Bornheim No. 3", 402, "img/bornheim_dual.jpg"),
-			new Gun(1, false, "Bornheim No. 3 Extended", 306, "img/bornheim_ext.jpg"),
-			new Gun(2, true, "Dual Bornheim No. 3 Extended", 612, "img/bornheim_ext_dual.jpg"),
-			new Gun(2, false, "Bornheim No. 3 Match", 224, "img/bornheim_match.jpg")
-			)
-		),
-	new GunFamily(36, 1, new Array(
-			new Gun(1, false, "Nagant M1895 Officer", 66, "img/officer.jpg"),
-			new Gun(2, true, "Dual Nagant M1895 Officer", 132, "img/officer_dual.jpg"),
-			new Gun(1, false, "Nagant M1895 Officer Brawler", 80, "img/officer_bra.jpg"),
-			new Gun(2, true, "Dual Nagant M1895 Officer Brawler", 160, "img/officer_bra_dual.jpg"),
-			new Gun(3, false, "Nagant M1895 Officer Carbine", 80, "img/officer_carb.jpg")
-		)
-	),
-	new GunFamily(46, 1, new Array(
-			new Gun(1, false, "LeMat Mark II Revolver", 95, "img/lemat.jpg"),
-			new Gun(2, true, "Dual LeMat Mark II Revolver", 190, "img/lemat_dual.jpg")
-		)
-	),
-	new GunFamily(68, 1, new Array(
-			new Gun(1, false, "Dolch 96", 750, "img/dolch.jpg"),
-			new Gun(2, true, "Dual Dolch 96", 1500, "img/dolch_dual.jpg"),
-			new Gun(2, false, "Dolch 96 Precision", 790, "img/dolch_prec.jpg")
-		)
-	),
-	new GunFamily(1, 2, new Array(
-			new Gun(3, false, "Romero 77", 34, "img/romero.jpg"),
-			new Gun(2, false, "Romero 77 Handcannon", 26, "img/romero_hand.jpg"),
-			new Gun(3, false, "Romero 77 Talon", 59, "img/romero_tal.jpg"),
-			new Gun(2, false, "Romero 77 Hatchet", 62, "img/romero_hatc.jpg")
-		)
-	),
-	new GunFamily(18, 2, new Array(
-			new Gun(3, false, "Caldwell Rival 78", 100, "img/rival.jpg"),
-			new Gun(2, false, "Caldwell Rival 78 Handcannon", 85, "img/rival_hand.jpg")
-		)
-	),
-	new GunFamily(58, 2, new Array(
-			new Gun(3, false, "Specter 1882", 188, "img/specter.jpg"),
-			new Gun(2, false, "Specter 1882 Compact", 164, "img/specter_com.jpg"),
-			new Gun(3, false, "Specter 1882 Bayonet", 223, "img/specter_bay.jpg")
-		)
-	),
-	new GunFamily(82, 3, new Array(
-			new Gun(3, false, "Crown And King Auto-5", 600, "img/crown.jpg")
-		)
-	),
-	new GunFamily(1, 2, new Array(
-			new Gun(2, false, "Combat Axe", 5, "img/axe.jpg")
-		)
-	),
-	new GunFamily(12, 1, new Array(
-			new Gun(1, false, "Machete", 18, "img/machete.jpg")
-		)
-	),
-	new GunFamily(62, 1, new Array(
-			new Gun(1, false, "Cavalry Saber", 60, "img/saber.jpg")
-		)
-	),
-	new GunFamily(78, 3, new Array(
-			new Gun(3, false, "Bomb Lance", 199, "img/bomb_lance.jpg")
-		)
-	),
-	new GunFamily(4, 2, new Array(
-			new Gun(2, false, "Hand Crossbow", 44, "img/crossbow_hand.jpg"),
-			new Gun(2, false, "Hand Crossbow Poison", 61, "img/crossbow_hand_poi.jpg"),
-			new Gun(3, false, "Crossbow", 73, "img/crossbow.jpg"),
-			new Gun(3, false, "Crossbow Explosive", 130, "img/crossbow_ex.jpg"),
-			new Gun(3, false, "Crossbow Shotbolt", 150, "img/crossbow_sho.jpg")
-		)
-	)
-);
+var gunFamilies;
+var toolFamilies;
+var consumableFamilies;
 
-var toolFamilies = new Array(
-	new ToolFamily(1, new Array(
-			new Tool("Knife", 20,"img/knife.jpg"),
-			new Tool("Throwing Knives", 40, "img/knife_throw.jpg"),
-			new Tool("Heavy Knife", 25,"img/knife_heavy.jpg")
-		)
-	),
-	new ToolFamily(1, new Array(
-			new Tool("Electric Lamp", 5, "img/lamp.jpg"),
-			new Tool("Fusees", 5, "img/fusees.jpg"),
-			new Tool("Flare Pistol", 36, "img/flare.jpg")
-		)
-	),
-	new ToolFamily(1, new Array(
-			new Tool("First Aid Kit", 30, "img/aid.jpg")
-		)
-	),
-	new ToolFamily(11, new Array(
-			new Tool("Choke Bomb", 25, "img/choke.jpg")
-		)
-	),
-	new ToolFamily(20, new Array(
-			new Tool("Dusters", 15, "img/dusters.jpg"),
-			new Tool("Knuckle Knife", 15, "img/knuckle.jpg")
-		)
-	),
-	new ToolFamily(24, new Array(
-			new Tool("Spyglass", 8, "img/spyglass.jpg")
-		)
-	),
-	new ToolFamily(32, new Array(
-			new Tool("Decoys", 6, "img/decoy.jpg"),
-			new Tool("Alert Trip Mine", 15, "img/trip_alert.jpg"),
-			new Tool("Blank Fire Decoys", 45, "img/decoy_blank.jpg"),
-			new Tool("Decoy Fuses", 60, "img/decoy_fuses.jpg")
-		)
-	),
-	new ToolFamily(40, new Array(
-			new Tool("Concertina Trip Mine", 90, "img/trip_con.jpg")
-		)
-	),
-	new ToolFamily(48, new Array(
-			new Tool("Poison Trip Mine", 60, "img/trip_poi.jpg")
-		)
-	),
-	new ToolFamily(66, new Array(
-			new Tool("Quad Derringer", 60, "img/derringer.jpg")
-		)
-	)
-);
+/* TODO: Maybe add duplicates array support, so we can randomize more slots with
+         duplicats and no duplicates? (currently only support yes/no for all slots
+*/
+function randomizeSlots(slots, duplicates) {
+	var randSlots = [];
 
-var consumableFamilies = new Array(
-	new ConsumableFamily(1, new Array(
-			new Consumable("Fire Bomb", 18, "img/fire.jpg"),
-			new Consumable("Liquid Fire Bomb", 23, "img/fire_liq.jpg"),
-			new Consumable("Hellfire Bomb", 70, "img/fire_hell.jpg")
-		)
-	),
-	new ConsumableFamily(8, new Array(
-			new Consumable("Dynamite Stick", 18, "img/dynamite.jpg"),
-			new Consumable("Waxed Dynamite Stick", 24, "img/dynamite_wax.jpg"),
-			new Consumable("Sticky Bomb", 64, "img/sticky.jpg"),
-			new Consumable("Dynamite Bundle", 75, "img/dynamite_bun.jpg"),
-			new Consumable("Frag Bomb", 70, "img/frag.jpg"),
-			new Consumable("Big Dynamite Bundle", 110, "img/dynamite_big.jpg")
-		)
-	),
-	new ConsumableFamily(1, new Array(
-			new Consumable("Weak Vitality Shot", 10, "img/vitality_weak.jpg"),
-			new Consumable("Weak Stamina Shot", 10, "img/stamina_weak.jpg"),
-			new Consumable("Vitality Shot", 75, "img/vitality.jpg"),
-			new Consumable("Stamina Shot", 40, "img/stamina.jpg")
-		)
-	),
-	new ConsumableFamily(48, new Array(
-			new Consumable("Poison Bomb", 25, "img/poison.jpg"),
-			new Consumable("Weak Antidote Shot", 25, "img/antidote_weak.jpg"),
-			new Consumable("Antidote Shot", 55, "img/antidote.jpg"),
-			new Consumable("Hive Bomb", 40, "img/hive.jpg")
-		)
-	),
-	new ConsumableFamily(32, new Array(
-			new Consumable("Chaos Bomb", 15, "img/chaos.jpg")
-		)
-	),
-	new ConsumableFamily(40, new Array(
-			new Consumable("Concertina Bomb", 48, "img/concertina.jpg"),
-			new Consumable("Flash Bomb", 47, "img/flash.jpg")
-		)
-	),
-	new ConsumableFamily(80, new Array(
-			new Consumable("Ammo Box", 65, "img/ammo.jpg")
-		)
-	)
-);
+	if (slots == null) {
+		randSlots = Object.keys(updateStack);
+	} else {
+		randSlots.push(slots);
+	}
+	console.log(randSlots);
+
+	randSlots.forEach(function(key) {
+		updateStack[key].forEach(function(num) {
+			do {
+				// TODO: Make generate more general to avoid the switch
+				switch (key) {
+					case "tools":
+						store[key][(num-1)] = generateTool();
+						break;
+					case "consumables":
+						store[key][(num-1)] = generateConsumable();
+						break;
+				}
+			} while (!duplicates && isDuplicate(store[key]));
+		})
+	});
+}
+
+// update Tool and Consumable Slots
+function updateSlots(random) {
+	Object.keys(updateStack).forEach(function(key) {
+		updateStack[key].forEach(function(num) {
+			var e = document.getElementById(key.substr(0,1)+num);
+			if (store[key][(num-1)] !== null) {
+				e.src = store[key][(num-1)].image;
+				e.alt = store[key][(num-1)].name;
+			}
+		})
+	});
+}
 
 function generate() {
 	setParameterValues();
@@ -295,14 +89,6 @@ function generate() {
 		remainingSize = maxSize;
 		weapon1 = null;
 		weapon2 = null;
-		tool1 = null;
-		tool2 = null;
-		tool3 = null;
-		tool4 = null;
-		consumable1 = null;
-		consumable2 = null;
-		consumable3 = null;
-		consumable4 = null;
 		if (generateWeapon1) {
 			weapon1 = generateWeapon();
 			remainingSize = remainingSize - weapon1.size;
@@ -318,63 +104,10 @@ function generate() {
 			document.getElementById("w2").alt = weapon2.name;
 		} else{
 			document.getElementById("w2").src = "img/emptySmall.jpg";
-		} 
-		if (generateTool1) {
-			tool1 = generateTool();
-			document.getElementById("t1").src = tool1.image;
-			document.getElementById("t1").alt = tool1.name;
-		} else{
-			document.getElementById("t1").src = "img/emptySmall.jpg";
 		}
-		if (generateTool2) {
-			tool2 = generateTool();
-			document.getElementById("t2").src = tool2.image;
-			document.getElementById("t2").alt = tool2.name;
-		} else{
-			document.getElementById("t2").src = "img/emptySmall.jpg";
-		}
-		if (generateTool3) {
-			tool3 = generateTool();
-			document.getElementById("t3").src = tool3.image;
-			document.getElementById("t3").alt = tool3.name;
-		} else{
-			document.getElementById("t3").src = "img/emptySmall.jpg";
-		}
-		if (generateTool4) {
-			tool4 = generateTool();
-			document.getElementById("t4").src = tool4.image;
-			document.getElementById("t4").alt = tool4.name;
-		} else{
-			document.getElementById("t4").src = "img/emptySmall.jpg";
-		}
-		if (generateConsumable1) {
-			consumable1 = generateConsumable();
-			document.getElementById("c1").src = consumable1.image;
-			document.getElementById("c1").alt = consumable1.name;
-		} else{
-			document.getElementById("c1").src = "img/emptySmall.jpg";
-		}
-		if (generateConsumable2) {
-			consumable2 = generateConsumable();
-			document.getElementById("c2").src = consumable2.image;
-			document.getElementById("c2").alt = consumable2.name;
-		} else{
-			document.getElementById("c2").src = "img/emptySmall.jpg";
-		}
-		if (generateConsumable3) {
-			consumable3 = generateConsumable();
-			document.getElementById("c3").src = consumable3.image;
-			document.getElementById("c3").alt = consumable3.name;
-		} else{
-			document.getElementById("c3").src = "img/emptySmall.jpg";
-		}
-		if (generateConsumable4) {
-			consumable4 = generateConsumable();
-			document.getElementById("c4").src = consumable4.image;
-			document.getElementById("c4").alt = consumable4.name;
-		} else{
-			document.getElementById("c4").src = "img/emptySmall.jpg";
-		}
+
+		updateSlots(true);
+
 	}
 }
 
@@ -425,14 +158,18 @@ function setMaxSize() {
 function setParameterValues() {
 	generateWeapon1 = document.getElementById("weapon1").checked;
 	generateWeapon2 = document.getElementById("weapon2").checked;
-	generateTool1 = document.getElementById("tool1").checked;
-	generateTool2 = document.getElementById("tool2").checked;
-	generateTool3 = document.getElementById("tool3").checked;
-	generateTool4 = document.getElementById("tool4").checked;
-	generateConsumable1 = document.getElementById("consumable1").checked;
-	generateConsumable2 = document.getElementById("consumable2").checked;
-	generateConsumable3 = document.getElementById("consumable3").checked;
-	generateConsumable4 = document.getElementById("consumable4").checked;
+
+	var checks = [].slice.call(document.getElementsByTagName("input"))
+			.filter(i => i.type == "checkbox" && /.*\d+$/.test(i.id));
+	checks.forEach(function(box) {
+		if (box.checked) {
+			// maybe introduce a dataset field? (hp)
+			var name = box.id.slice(0, -1)+"s";//wtf. (hp)
+			console.log(name);
+			updateStack[name].push(parseInt(box.id.slice(-1)));
+		}
+	});
+
 	allowDualWield = document.getElementById("dual").checked
 	allowQuatermaster = document.getElementById("quartermaster").checked
 	allowDuplicateWeapons = document.getElementById("dup").checked
@@ -505,14 +242,91 @@ function filterToolFamilyCandidates(){
 	return candidates;
 }
 
+function isDuplicate(array) {
+	return (array.filter((item, index) => item != null && array.indexOf(item) != index)).length != 0;
+}
+
+// XXX: needs rename? (hp)
+function isDefined(position, temp) {
+	return (position != null && position.name == temp.name);
+}
+
+function activateEvents() {
+	var checks = [].slice.call(document.getElementsByTagName("input"));
+	checks = checks.filter(box => box.type == "checkbox");
+	checks.forEach(function(box) {
+		box.addEventListener("change", function(e) {
+			var name = e.target.id.slice(0, -1)+"s";//wtf. (hp)
+			var number = parseInt(e.target.id.slice(-1))
+
+
+			if (e.target.checked) {
+				updateStack[name].push(number);
+			} else {
+				updateStack[name] = updateStack[name].filter(n => n !== number);
+			}
+		});
+	});
+
+	var buttons = [].slice.call(document.getElementsByTagName("button"))
+			.filter(btn => btn.type == "submit");
+	buttons.forEach(function(btn) {
+		btn.addEventListener("click", function(e) {
+			// TODO: Fix this for more buttons. (hp)
+			switch (e.target.id) {
+				case "generate_loadout":
+					randomizeSlots("tools", false);
+					randomizeSlots("consumables", true);
+				break;
+			}
+		});
+	});
+}
+
+function loadExternalData() {
+	Object.keys(externalData).forEach(function(key) {
+		if (externalData[key] == null) { return; }
+		// check if already downloaded.
+		// TODO: this is bad. make all families an array. (hp)
+		// TODO: stop this string black magic. (hp)
+		if ((window[(key.slice(0,-1))+"Families"] = JSON.parse(localStorage.getItem(key))) != null) {
+			console.log("Already loaded '"+key+"'.");
+			return;
+		}
+		console.log("Loading '"+key+" from "+externalData[key]+".");
+
+		var xhttp = new XMLHttpRequest();
+		xhttp.addEventListener("load", function() {
+			localStorage.setItem(key, xhttp.responseText);
+			if ((window[(key.slice(0,-1))+"Families"] = JSON.parse(localStorage.getItem(key))) != null) {
+				alert("something has gone terribly wrong!");
+			}
+		}.bind(key));
+		xhttp.open("GET", externalData[key]);
+		xhttp.send();
+	});
+}
+
+function findFamilyOf(searchin, sub, searchfor) {
+	var index = searchin.findIndex(function(family, index) {
+		if ((family[sub].findIndex(function(item, index) {
+			return (item.name == searchfor.name);
+		})) != -1) {
+			return true;
+		} else {
+			return false;
+		}
+	});
+
+	return (index != -1 ? searchin[index] : null);
+}
+
 function filterToolCandidates(family){
 	var candidates = new Array();
 	for (tool of family.tools){
-		if (   (tool1 == null || (tool1 != null && tool1.name != tool.name))
-			&& (tool2 == null || (tool2 != null && tool2.name != tool.name))
-			&& (tool3 == null || (tool3 != null && tool3.name != tool.name))
-			&& (tool4 == null || (tool4 != null && tool4.name != tool.name))
-			) {
+		if (store.tools.every(function(t) {
+			return (t == null || t != null && t.name);
+		})) {
 			candidates.push(tool);
 		}
 	}
@@ -521,19 +335,14 @@ function filterToolCandidates(family){
 
 function isToolUnavailable(candidates){
 	var totalNumberOfTools = 0;
-	var totalNumberOfCandidate = 0; 
-	if (tool1 != null) {
-		totalNumberOfTools = totalNumberOfTools + 1;
-	}
-	if (tool2 != null) {
-		totalNumberOfTools = totalNumberOfTools + 1;
-	}
-	if (tool3 != null) {
-		totalNumberOfTools = totalNumberOfTools + 1;
-	}
-	if (tool4 != null) {
-		totalNumberOfTools = totalNumberOfTools + 1;
-	}
+	var totalNumberOfCandidate = 0;
+
+	store.tools.forEach(function(tool) {
+		if (tool != null) {
+			totalNumberOfTools += 1;
+		}
+	});
+
 	for (family of candidates){
 		for(tool of family.tools){
 			totalNumberOfCandidate = totalNumberOfCandidate + 1;
@@ -623,6 +432,7 @@ function previous(toRoll){
 				for (var i = family.guns.length - 1; i >= 0; i--) {
 					if (found) {
 						gun = family.guns[i];
+					//updateSlots();
 						if (gun.size <= remainingSize) {
 							if (!(gun.dualWield && !allowDualWield)) {
 								if ((weapon1 != null && weapon1.name != gun.name) || weapon1 == null || (weapon1 != null && allowDuplicateWeapons)) {
@@ -643,193 +453,37 @@ function previous(toRoll){
 			}
 		}
 	}
-	if (toRoll == "tool1") {
-		if (generateTool1) {
-			for(family of toolFamilies) {
-				found = false;
-				for (var i = family.tools.length - 1; i >= 0; i--) {
-					tool = family.tools[i]
-					if (found) {
-						if(	   (tool2 == null || (tool2 != null && tool2.name != tool.name))
-							&& (tool3 == null || (tool3 != null && tool3.name != tool.name))
-							&& (tool4 == null || (tool4 != null && tool4.name != tool.name))) {
-							tool1 = tool;
-							break;
-						}
-					}
-					if (tool1 != null && tool.name == tool1.name) {
-						found = true;
-					}
-				}
-				if (found){
-					document.getElementById("t1").src = tool1.image;
-					document.getElementById("t1").alt = tool1.name;
-					break;
-				}
-			}
-		}
+
+	if (toRoll.substring(0, 4) == "tool") {
+		var tnum = parseInt(toRoll.substring(4))-1;
+		var prev = store.tools[tnum];
+
+		var fam   = findFamilyOf(toolFamilies, "tools", store.tools[tnum]);
+		var infam = fam.tools.findIndex(function(tool, index) {
+			return tool.name = store.tools[tnum].name;
+		});
+
+		store.tools[tnum] = (infam > 0 ? fam.tools[infam-1] : fam.tools[infam]);
+
+		//TODO: Maybe skip a tier? (hp)
+		if (isDuplicate(store.tools)) { store.tools[tnum] = prev; }
+
+		updateSlots(false);
+		
 	}
-	if (toRoll == "tool2") {
-		if (generateTool2) {
-			for(family of toolFamilies) {
-				found = false;
-				for (var i = family.tools.length - 1; i >= 0; i--) {
-					tool = family.tools[i]
-					if (found) {
-						if(	   (tool1 == null || (tool1 != null && tool1.name != tool.name))
-							&& (tool3 == null || (tool3 != null && tool3.name != tool.name))
-							&& (tool4 == null || (tool4 != null && tool4.name != tool.name))) {
-							tool2 = tool;
-							break;
-						}
-					}
-					if (tool2 != null && tool.name == tool2.name) {
-						found = true;
-					}
-				}
-				if (found){
-					document.getElementById("t2").src = tool2.image;
-					document.getElementById("t2").alt = tool2.name;
-					break;
-				}
-			}
-		}
-	}
-	if (toRoll == "tool3") {
-		if (generateTool3) {
-			for(family of toolFamilies) {
-				found = false;
-				for (var i = family.tools.length - 1; i >= 0; i--) {
-					tool = family.tools[i]
-					if (found) {
-						if(	   (tool2 == null || (tool2 != null && tool2.name != tool.name))
-							&& (tool1 == null || (tool1 != null && tool1.name != tool.name))
-							&& (tool4 == null || (tool4 != null && tool4.name != tool.name))) {
-							tool3 = tool;
-							break;
-						}
-					}
-					if (tool3 != null && tool.name == tool3.name) {
-						found = true;
-					}
-				}
-				if (found){
-					document.getElementById("t3").src = tool3.image;
-					document.getElementById("t3").alt = tool3.name;
-					break;
-				}
-			}
-		}
-	}
-	if (toRoll == "tool4") {
-		if (generateTool4) {
-			for(family of toolFamilies) {
-				found = false;
-				for (var i = family.tools.length - 1; i >= 0; i--) {
-					tool = family.tools[i]
-					if (found) {
-						if(	   (tool2 == null || (tool2 != null && tool2.name != tool.name))
-							&& (tool3 == null || (tool3 != null && tool3.name != tool.name))
-							&& (tool1 == null || (tool1 != null && tool1.name != tool.name))) {
-							tool4 = tool;
-							break;
-						}
-					}
-					if (tool4 != null && tool.name == tool4.name) {
-						found = true;
-					}
-				}
-				if (found){
-					document.getElementById("t4").src = tool4.image;
-					document.getElementById("t4").alt = tool4.name;
-					break;
-				}
-			}
-		}
-	}
-	if (toRoll == "consumable1") {
-		if (generateConsumable1) {
-			for(family of consumableFamilies) {
-				found = false;
-				for (var i = family.consumables.length - 1; i >= 0; i--) {
-					consumable = family.consumables[i];
-					if (found) {
-						consumable1 = consumable;
-						break;
-					}
-					if (consumable1 != null && consumable.name == consumable1.name) {
-						found = true;
-					}
-				}
-				if (found) {
-					document.getElementById("c1").src = consumable1.image;
-					document.getElementById("c1").alt = consumable1.name;
-				}
-			}
-		}
-	}
-	if (toRoll == "consumable2") {
-		if (generateConsumable2) {
-			for(family of consumableFamilies) {
-				found = false;
-				for (var i = family.consumables.length - 1; i >= 0; i--) {
-					consumable = family.consumables[i];
-					if (found) {
-						consumable2 = consumable;
-						break;
-					}
-					if (consumable2 != null && consumable.name == consumable2.name) {
-						found = true;
-					}
-				}
-				if (found) {
-					document.getElementById("c2").src = consumable2.image;
-					document.getElementById("c2").alt = consumable2.name;
-				}
-			}
-		}
-	}
-	if (toRoll == "consumable3") {
-		if (generateConsumable3) {
-			for(family of consumableFamilies) {
-				found = false;
-				for (var i = family.consumables.length - 1; i >= 0; i--) {
-					consumable = family.consumables[i];
-					if (found) {
-						consumable3 = consumable;
-						break;
-					}
-					if (consumable3 != null && consumable.name == consumable3.name) {
-						found = true;
-					}
-				}
-				if (found) {
-					document.getElementById("c3").src = consumable3.image;
-					document.getElementById("c3").alt = consumable3.name;
-				}
-			}
-		}
-	}
-	if (toRoll == "consumable4") {
-		if (generateConsumable4) {
-			for(family of consumableFamilies) {
-				found = false;
-				for (var i = family.consumables.length - 1; i >= 0; i--) {
-					consumable = family.consumables[i];
-					if (found) {
-						consumable4 = consumable;
-						break;
-					}
-					if (consumable4 != null && consumable.name == consumable4.name) {
-						found = true;
-					}
-				}
-				if (found) {
-					document.getElementById("c4").src = consumable4.image;
-					document.getElementById("c4").alt = consumable4.name;
-				}
-			}
-		}
+
+	if (toRoll.substring(0, 10) == "consumable") {
+		var cnum = parseInt(toRoll.substring(10))-1;
+		console.log(cnum);
+
+		var fam   = findFamilyOf(consumableFamilies, "consumables", store.consumables[cnum]);
+		var infam = fam.consumables.findIndex(function(consumable, index) {
+			return consumable.name = store.consumables[cnum].name;
+		});
+
+		//TODO: CHECK FOR DUPLICATES, YOU IDIOT. (hp)
+		store.consumables[cnum] = (infam > 0 ? fam.consumables[infam-1] : fam.consumables[infam]);
+		updateSlots(false);
 	}
 }
 
@@ -861,68 +515,6 @@ function reroll(toRoll){
 			document.getElementById("w2").alt = weapon2.name;
 		}
 	}
-	if (toRoll == "tool1") {
-		if (generateTool1) {
-			tool1 = null;
-			tool1 = generateTool();
-			document.getElementById("t1").src = tool1.image;
-			document.getElementById("t1").alt = tool1.name;
-		}
-	}
-	if (toRoll == "tool2") {
-		if (generateTool2) {
-			tool2 = null;
-			tool2 = generateTool();
-			document.getElementById("t2").src = tool2.image;
-			document.getElementById("t2").alt = tool2.name;
-		}
-	}
-	if (toRoll == "tool3") {
-		if (generateTool3) {
-			tool3 = null;
-			tool3 = generateTool();
-			document.getElementById("t3").src = tool3.image;
-			document.getElementById("t3").alt = tool3.name;
-		}
-	}
-	if (toRoll == "tool4") {
-		if (generateTool4) {	
-			tool4 = null;
-			tool4 = generateTool();
-			document.getElementById("t4").src = tool4.image;
-			document.getElementById("t4").alt = tool4.name;
-		}
-	}
-	if (toRoll == "consumable1") {
-		if (generateConsumable1){
-			consumable1 = null;
-			consumable1 = generateConsumable();
-			document.getElementById("c1").src = consumable1.image;
-			document.getElementById("c1").alt = consumable1.name;
-		}	
-	}
-	if (toRoll == "consumable2") {
-		if (generateConsumable2){
-			consumable2 = null;
-			consumable2 = generateConsumable();
-			document.getElementById("c2").src = consumable2.image;
-			document.getElementById("c2").alt = consumable2.name;
-		}
-	}
-	if (toRoll == "consumable3") {
-		if (generateConsumable3){
-			consumable3 = null;
-			consumable3 = generateConsumable();
-			document.getElementById("c3").src = consumable3.image;
-			document.getElementById("c3").alt = consumable3.name;
-		}
-	}
-	if (toRoll == "consumable4") {
-		if (generateConsumable4){
-			consumable4 = null;
-			consumable4 = generateConsumable();
-			document.getElementById("c4").src = consumable4.image;
-			document.getElementById("c4").alt = consumable4.name;
-		}
-	}
+
+	updateSlots(true);
 }
