@@ -1,13 +1,16 @@
-html, body {
-	 width: 100%;
-	 height: 100%;
-	 margin:0;
-	 text-align: center;
-	 position: relative;
-	 color: white;
-	 font-family: sans-serif;
-	 background-color: #121212;
-	}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  position: relative;
+  color: white;
+  font-family: sans-serif;
+  background-color: #121212;
+  min-width: 350px;
+}
 
 
 .centerover {
@@ -16,7 +19,7 @@ html, body {
   z-index: 1000000;
 }
 
-.centerover  img{
+.centerover img {
   max-width: 100%;
   height: auto;
 }
@@ -25,12 +28,11 @@ html, body {
   margin-top: 50px;
 }
 
-.linkdiv .linkbutton{
-  background: #292929; 
+.linkdiv .linkbutton {
+  background: #292929;
   border: 1px solid #292929;
   color: white;
   line-height: 25px;
-  
   background-size: 500px 50px;
   border-radius: 2px;
   text-shadow: 0 1px 0 #000000;
@@ -38,51 +40,60 @@ html, body {
 }
 
 .header {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 120px;
-	line-height: 120px;
-	text-align: center;
-	background-color: #000000;
+  min-height: 100%;
+  height: 120px;
+  text-align: center;
+  background-color: #000000;
 }
 
 .header img {
-	height: 157px;
-	width: 1920px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left;
 }
 
 .footer {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	height: 30px;
-	line-height: 30px;
-	text-align: center;
-	background-color: #ffffff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background-color: #ffffff;
 }
 
-.body-content{
-	margin: 0 auto;
-	padding-top: 180px;
-	max-width: 1200px;
-	width: 100%;
-	height: 100%;
+.body-content {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+  height: 100%;
 }
 
 .loadout {
-	margin: 0;
-	position: relative;
-	display: inline-block;
-	text-align: left;
-	max-width: 500px;
-	color: white;
+  margin: 0;
+  position: relative;
+  text-align: left;
+  margin-top: 20px;
+  color: white;
 }
 
 .loadout ul {
   list-style-type: none;
+}
+
+.loadout div label {
+  width: 100%;
+}
+
+.loadout div label img {
+  width: 100%;
+  transition-duration: 0.2s;
+  transform-origin: 50% 50%;
+  z-index: -1;
+  object-fit: cover;
+  object-position: top;
 }
 
 .loadout li {
@@ -95,46 +106,40 @@ html, body {
 
 .loadout div label:first-of-type {
   display: inline-block;
-  margin: 10px;
+  /* margin: 10px; */
   cursor: pointer;
 }
 
-.loadout div label img {
-  transition-duration: 0.2s;
-  transform-origin: 50% 50%;
-  z-index: -1;
-}
-
-.loadout :checked + label img {
+.loadout :checked+label img {
   box-shadow: 0 0 10px red;
 }
 
 .loadout div {
-	display: inline-block;
-	position: relative;
+  position: relative;
 }
 
 button.red-button {
-    background: #8B0000; 
-    border: 1px solid #8B0000;
-    color: white;
-    line-height: 25px;
-    width: 200px;
-    padding: 5px 10px;
-    border-radius: 2px;
-    outline: none;
-    text-shadow: 0 1px 0 #C04131;
+  background: #8B0000;
+  border: 1px solid #8B0000;
+  color: white;
+  line-height: 25px;
+  /* width: 200px; */
+  width: 100%;
+  padding: 5px 10px;
+  border-radius: 2px;
+  outline: none;
+  text-shadow: 0 1px 0 #C04131;
 
 }
 
 button.red-button:hover {
-     background: #FF0000;
-     border: 1px solid #FF0000;
+  background: #FF0000;
+  border: 1px solid #FF0000;
 }
 
 button.red-button:active {
-    background: #8B0000;
-    border: 1px solid #8B0000;
+  background: #8B0000;
+  border: 1px solid #8B0000;
 }
 
 button:disabled {
@@ -142,64 +147,65 @@ button:disabled {
   border: none;
 }
 
-button:disabled:hover{
+button:disabled:hover {
   background: #303030;
   border: none;
 }
 
 div.option {
-	display: inline-block;
-	width: 200px;
-	line-height: 23px;
-	text-align: center;
+  display: inline-block;
+  line-height: 23px;
+  text-align: center;
 }
 
 img.hover1 {
-	display: none;
-	position: absolute;
-	z-index: 100000;
-	left: 13px;
-	top: 13px;
-	cursor: pointer;
-	border: 1px solid black;
+  display: none;
+  position: absolute;
+  z-index: 100000;
+  left: 13px;
+  top: 13px;
+  cursor: pointer;
+  border: 1px solid black;
 }
 
 img.hover2 {
-	display: none;
-	position: absolute;
-	z-index: 100000;
-	left: 46px;
-	top: 13px;
-	cursor: pointer;
-	border: 1px solid black;
+  display: none;
+  position: absolute;
+  z-index: 100000;
+  left: 46px;
+  top: 13px;
+  cursor: pointer;
+  border: 1px solid black;
 }
 
 img.overlay1 {
-	display: inline-block;
-	position: absolute;
-	z-index: 100000;
+  display: inline-block;
+  position: absolute;
+  z-index: 100000;
   width: 20px;
   height: 40px;
-	right: 10px;
-	top: 7px;
+  right: 10px;
+  top: 7px;
 }
 
 img.overlay2 {
-	display: inline-block;
-	position: absolute;
-	z-index: 100000;
+  display: inline-block;
+  position: absolute;
+  z-index: 100000;
   width: 20px;
   height: 40px;
-	right: 25px;
-	top: 7px;
+  right: 25px;
+  top: 7px;
 }
 
-img.hover1:hover, img.hover2:hover {
-	box-shadow: 0 0 5px white; 
+img.hover1:hover,
+img.hover2:hover {
+  box-shadow: 0 0 5px white;
 }
 
-.loadout div:hover img.hover1, .loadout div:hover img.hover2 {
-	display: inline-block;
+.loadout div:hover img.hover1,
+.loadout div:hover img.hover2 {
+  display: inline-block;
 }
 
 .switch {
@@ -241,15 +247,15 @@ img.hover1:hover, img.hover2:hover {
   transition: .4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: #8B0000;
 }
 
-input:focus + .slider {
+input:focus+.slider {
   box-shadow: 0 0 1px #8B0000;
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
@@ -274,37 +280,54 @@ input[type="number"] {
   line-height: 27px;
 }
 
-div.menu-open{
-  border-top-right-radius: 0%       !important;
-  border-bottom-right-radius: 0%    !important;
+div.menu-open {
+  border-top-right-radius: 0% !important;
+  border-bottom-right-radius: 0% !important;
 }
 
 div.option-menu {
-  position: absolute;
   text-align: left;
-  padding: 3px;
-  top: 157px;
-  background-color: #242424 ;
+  background-color: #242424;
   border-top-right-radius: 0%;
   border-bottom-right-radius: 50%;
   min-width: 25px;
 }
 
-#nav-toggle {
-  cursor: pointer;
+.grey-background {
+  background-color: #242424;
 }
 
-#menu{
+.full-width-container {
+  width: 100%;
+  max-width: 100%;
+  clear: both;
+  margin: 0 auto;
+}
+
+#nav-toggle {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+#menu {
   display: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
@@ -312,23 +335,31 @@ div.option-menu {
   display: none;
   text-align: center;
   align-items: center;
+  margin-top: 60px;
+  margin-bottom: 40px;
 }
 
-div#under > label {
+div#under>label {
   display: inline-block;
   position: relative;
   bottom: 12px;
 }
 
 .linkbutton {
-    background: #8B0000; 
-    border: 1px solid #8B0000;
-    color: white;
-    line-height: 25px;
-    width: 200px;
-    padding: 5px 10px;
-    border-radius: 10px;
-    outline: none;
-    text-shadow: 0 1px 0 #C04131;
-    text-decoration: none;
+  background: #8B0000;
+  border: 1px solid #8B0000;
+  color: white;
+  line-height: 25px;
+  width: 200px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  outline: none;
+  text-shadow: 0 1px 0 #C04131;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+form {
+  margin-top: 20px;
+  margin-bottom: 0;
 }
