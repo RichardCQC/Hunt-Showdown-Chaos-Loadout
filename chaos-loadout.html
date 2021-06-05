@@ -1,178 +1,197 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Hunt Random Loadout Generator</title>
   <meta name="description" content="A random loadout generator for the game Hunt : Showdown.">
   <meta name="author" content="RichardCQC">
+  <link rel="stylesheet" href="ext/Skeleton-2.0.4/css/skeleton.css">
   <link rel="stylesheet" href="css/style.css">
+
   <script src="js/script.js"></script>
   <script>
-    window.onload = function() {
+    window.onload = function () {
       setParameterValues();
       activateEvents();
     }
   </script>
-  <link rel="icon" 
-      type="image/png" 
-      href="img/navicon.png">
+  <link rel="icon" type="image/png" href="img/navicon.png">
 </head>
- 
+
 <body>
-  <div class="main-content">
-  	<div class="header">
-      <img src="img/banner.jpg" alt="Hunt Showdown Loadout Generator"/>
+  <div class="full-width-container">
+    <div class="row">
+      <div class="header">
+        <img src="img/banner.jpg" alt="Hunt Showndown Loadout Generator" />
+      </div>
     </div>
-    <div class="option-menu">
-      <a id="nav-toggle" class="noselect" onclick="toggleMenu()">&#9776;</a>
-      <span id="menu">
-        <div class="option">
-          <label class="switch">
-            <input type="checkbox" id="sound" name="sound" checked />
-            <span class="slider round"></span>
-          </label>
-          <label for="sound">Sound</label>
+    <div class="row grey-background">
+      <div class="option-menu">
+        <div class="one columns">
+          <a id="nav-toggle" class="noselect" onclick="toggleMenu()">&#9776;</a>
         </div>
-        <div class="option">
-          <label class="switch">
-            <input type="checkbox" id="anim" name="anim"  checked />
-            <span class="slider round"></span>
-          </label>
-          <label for="anim">Roll Animation</label>
+        <div id="menu" class="eleven columns">
+          <div class="three columns option">
+            <label class="switch">
+              <input type="checkbox" id="sound" name="sound" checked />
+              <span class="slider round"></span>
+            </label>
+            <label for="sound">Sound</label>
+          </div>
+          <div class="three columns option">
+            <label class="switch">
+              <input type="checkbox" id="anim" name="anim" checked />
+              <span class="slider round"></span>
+            </label>
+            <label for="anim">Roll Animation</label>
+          </div>
+          <div class="three columns option">
+            <a class="linkbutton" href="home.html">Back to Home!</a>
+          </div>
         </div>
-        <div class = "option">
-          <a class = "linkbutton" href="home.html">Back to Home!</a>
-        </div>
-      </span>
+      </div>
     </div>
-    <audio id="tick" autoplay="autoplay">
-      <source src="sound/tick.wav"></source>
-    </audio>
-    <audio id="found" autoplay="autoplay">
-      <source src="sound/found.m4a"></source>
-    </audio>
-  	<div class="body-content">
-      <form onsubmit="return false">
-        <label for="rank">Bloodline Rank:</label>
-        <input type="number" id="rank" name="rank" min="1" max="100" value="100">
-        <br><br>
-        <div class="option">
-          <label class="switch">
-            <input type="checkbox" id="dual" name="dual" checked />
-            <span class="slider round"></span>
-          </label>
-          <label for="dual">Dual Wield</label>
-        </div>
-        <div class="option">
-          <label class="switch">
-            <input type="checkbox" id="dup" name="dup" checked />
-            <span class="slider round"></span>
-          </label>
-          <label for="dup">Duplicate Weapons</label>
-        </div>
-        <div class="option">
-          <label class="switch">
-            <input type="checkbox" id="customammo" name="customammo" checked />
-            <span class="slider round"></span>
-          </label>
-          <label for="customammo">Custom Ammo</label>
-        </div>
-        <div class="option">
-          <label class="switch">
-            <input type="checkbox" id="quartermaster" name="quartermaster" />
-            <span class="slider round"></span>
-          </label>
-          <label for="quartermaster">Quartermaster</label>
-        </div>
-        <br><br>
-        <button id="generate_loadout" type="submit" class="red-button">Generate Loadout</button>
-        <br><br>
-      </form>
-        <div class="loadout">
-          <form>
-          <label>Weapons</label>
-          <li>
-            <div>
-              <input type="checkbox" id="weapon1" checked="true" />
-              <label class="noselect" for="weapon1"><img id="w1" src="img/emptyLarge.jpg"/></label>
-              <img class="hover1" src="img/reroll.jpg" onclick="reroll('weapon1')" />
-              <img class="hover2" src="img/previous.jpg" onclick="previous('weapon1')" />
-              <img class="overlay1" id="w1a1" src = "img/ammo/none.png"/>
-              <img class="overlay2" id="w1a2" src = "img/ammo/none.png"/>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="body-content">
+        <form onsubmit="return false">
+          <div class="row">
+            <label for="rank">Bloodline Rank:</label>
+            <input type="number" id="rank" name="rank" min="1" max="100" value="100">
+          </div>
+          <div class="row">
+            <div class="three columns option">
+              <label class="switch">
+                <input type="checkbox" id="dual" name="dual" checked />
+                <span class="slider round"></span>
+              </label>
+              <label for="dual">Dual Wield</label>
             </div>
-          </li>
-          <li>
-            <div>
-              <input type="checkbox" id="weapon2" checked="true" />
-              <label class="noselect" for="weapon2"><img id="w2" src="img/emptySmall.jpg"/></label>
-              <img class="hover1" src="img/reroll.jpg" onclick="reroll('weapon2')" />
-              <img class="hover2" src="img/previous.jpg" onclick="previous('weapon2')" />
-              <img class="overlay1" id="w2a1" src = "img/ammo/none.png"/>
-              <img class="overlay2" id="w2a2" src = "img/ammo/none.png"/>
+            <div class="three columns option">
+              <label class="switch">
+                <input type="checkbox" id="dup" name="dup" checked />
+                <span class="slider round"></span>
+              </label>
+              <label for="dup">Duplicate Weapons</label>
             </div>
-          </li>
-          <label>Tools</label>
-          <li>
-            <div>
-              <input type="checkbox" class="tool" id="tool1" checked />
-              <label class="noselect" for="tool1"><img id="t1" src="img/emptySmall.jpg"/></label> 
-              <img class="hover1" src="img/reroll.jpg" onclick="reroll('tool1')" />
-              <img class="hover2" src="img/previous.jpg" onclick="previous('tool1')" />
+            <div class="three columns option">
+              <label class="switch">
+                <input type="checkbox" id="customammo" name="customammo" checked />
+                <span class="slider round"></span>
+              </label>
+              <label for="customammo">Custom Ammo</label>
             </div>
-            <div>
-              <input type="checkbox" class="tool" id="tool2" checked />
-              <label class="noselect" for="tool2"><img id="t2" src="img/emptySmall.jpg"/></label> 
-              <img class="hover1" src="img/reroll.jpg" onclick="reroll('tool2')" />
-              <img class="hover2" src="img/previous.jpg" onclick="previous('tool2')" />
+            <div class="three columns option">
+              <label class="switch">
+                <input type="checkbox" id="quartermaster" name="quartermaster" />
+                <span class="slider round"></span>
+              </label>
+              <label for="quartermaster">Quartermaster</label>
             </div>
-            <div>
-              <input type="checkbox" class="tool" id="tool3" checked />
-              <label class="noselect" for="tool3"><img id="t3" src="img/emptySmall.jpg"/></label>
-              <img class="hover1" src="img/reroll.jpg" onclick="reroll('tool3')" />
-              <img class="hover2" src="img/previous.jpg" onclick="previous('tool3')" />
-            </div>
-            <div>
-              <input type="checkbox" class="tool" id="tool4" checked />
-              <label class="noselect" for="tool4"><img id="t4" src="img/emptySmall.jpg"/></label> 
-              <img class="hover1" src="img/reroll.jpg" onclick="reroll('tool4')" />
-              <img class="hover2" src="img/previous.jpg" onclick="previous('tool4')" />
-            </div>
-          </li>
-          <label>Consumables</label>
-          <li>
-            <div>
-              <input type="checkbox" id="consumable1" checked />
-              <label class="noselect" for="consumable1"><img id="c1" src="img/emptySmall.jpg"/></label>
-              <img class="hover1" src="img/reroll.jpg" onclick="reroll('consumable1')" />
-              <img class="hover2" src="img/previous.jpg" onclick="previous('consumable1')" />
-            </div>
-            <div>
-              <input type="checkbox" id="consumable2" checked />
-              <label class="noselect" for="consumable2"><img id="c2" src="img/emptySmall.jpg"/></label> 
-              <img class="hover1" src="img/reroll.jpg" onclick="reroll('consumable2')" />
-              <img class="hover2" src="img/previous.jpg" onclick="previous('consumable2')" />
-            </div>
-            <div>
-              <input type="checkbox" id="consumable3" checked />
-              <label class="noselect" for="consumable3"><img id="c3" src="img/emptySmall.jpg"/></label> 
-              <img class="hover1" src="img/reroll.jpg" onclick="reroll('consumable3')" />
-              <img class="hover2" src="img/previous.jpg" onclick="previous('consumable3')" />
-            </div>
-            <div>
-              <input type="checkbox" id="consumable4" checked />
-              <label class="noselect" for="consumable4"><img id="c4" src="img/emptySmall.jpg"/></label> 
-              <img class="hover1" src="img/reroll.jpg" onclick="reroll('consumable4')" />
-              <img class="hover2" src="img/previous.jpg" onclick="previous('consumable4')" />
-            </div>
-          </li>
-          <div id="under">
-            <img src="img/dollars.png"/>
-            <label id="priceTotal">0</label>
+          </div>
+          <div class="row">
+            <button id="generate_loadout" type="submit" class="red-button">Generate Loadout</button>
           </div>
         </form>
+      </div>
+    </div>
+
+    <div class="row loadout"> 
+        <label>Weapons</label>
+        <div class="row">
+
+          <div class="six columns">
+            <input type="checkbox" id="weapon1" checked="true" />
+            <label class="noselect" for="weapon1"><img id="w1" src="img/emptyLarge.jpg" /></label>
+            <img class="hover1" src="img/reroll.jpg" onclick="reroll('weapon1')" />
+            <img class="hover2" src="img/previous.jpg" onclick="previous('weapon1')" />
+            <img class="overlay1" id="w1a1" src="img/ammo/none.png" />
+            <img class="overlay2" id="w1a2" src="img/ammo/none.png" />
+          </div>
+          <div class="six columns">
+            <input type="checkbox" id="weapon2" checked="true" />
+            <label class="noselect" for="weapon2"><img id="w2" src="img/emptySmall.jpg" /></label>
+            <img class="hover1" src="img/reroll.jpg" onclick="reroll('weapon2')" />
+            <img class="hover2" src="img/previous.jpg" onclick="previous('weapon2')" />
+            <img class="overlay1" id="w2a1" src="img/ammo/none.png" />
+            <img class="overlay2" id="w2a2" src="img/ammo/none.png" />
+          </div>
         </div>
-  	</div>
+        <label>Tools</label>
+        <div class="row">
+          <div class="three columns">
+            <input type="checkbox" class="tool" id="tool1" checked />
+            <label class="noselect" for="tool1"><img id="t1" src="img/emptySmall.jpg" /></label>
+            <img class="hover1" src="img/reroll.jpg" onclick="reroll('tool1')" />
+            <img class="hover2" src="img/previous.jpg" onclick="previous('tool1')" />
+          </div>
+          <div class="three columns">
+            <input type="checkbox" class="tool" id="tool2" checked />
+            <label class="noselect" for="tool2"><img id="t2" src="img/emptySmall.jpg" /></label>
+            <img class="hover1" src="img/reroll.jpg" onclick="reroll('tool2')" />
+            <img class="hover2" src="img/previous.jpg" onclick="previous('tool2')" />
+          </div>
+          <div class="three columns">
+            <input type="checkbox" class="tool" id="tool3" checked />
+            <label class="noselect" for="tool3"><img id="t3" src="img/emptySmall.jpg" /></label>
+            <img class="hover1" src="img/reroll.jpg" onclick="reroll('tool3')" />
+            <img class="hover2" src="img/previous.jpg" onclick="previous('tool3')" />
+          </div>
+          <div class="three columns">
+            <input type="checkbox" class="tool" id="tool4" checked />
+            <label class="noselect" for="tool4"><img id="t4" src="img/emptySmall.jpg" /></label>
+            <img class="hover1" src="img/reroll.jpg" onclick="reroll('tool4')" />
+            <img class="hover2" src="img/previous.jpg" onclick="previous('tool4')" />
+          </div>
+        </div>
+        <label>Consumables</label>
+        <div class="row">
+          <div class="three columns">
+            <input type="checkbox" id="consumable1" checked />
+            <label class="noselect" for="consumable1"><img id="c1" src="img/emptySmall.jpg" /></label>
+            <img class="hover1" src="img/reroll.jpg" onclick="reroll('consumable1')" />
+            <img class="hover2" src="img/previous.jpg" onclick="previous('consumable1')" />
+          </div>
+          <div class="three columns">
+            <input type="checkbox" id="consumable2" checked />
+            <label class="noselect" for="consumable2"><img id="c2" src="img/emptySmall.jpg" /></label>
+            <img class="hover1" src="img/reroll.jpg" onclick="reroll('consumable2')" />
+            <img class="hover2" src="img/previous.jpg" onclick="previous('consumable2')" />
+          </div>
+          <div class="three columns">
+            <input type="checkbox" id="consumable3" checked />
+            <label class="noselect" for="consumable3"><img id="c3" src="img/emptySmall.jpg" /></label>
+            <img class="hover1" src="img/reroll.jpg" onclick="reroll('consumable3')" />
+            <img class="hover2" src="img/previous.jpg" onclick="previous('consumable3')" />
+          </div>
+          <div class="three columns">
+            <input type="checkbox" id="consumable4" checked />
+            <label class="noselect" for="consumable4"><img id="c4" src="img/emptySmall.jpg" /></label>
+            <img class="hover1" src="img/reroll.jpg" onclick="reroll('consumable4')" />
+            <img class="hover2" src="img/previous.jpg" onclick="previous('consumable4')" />
+          </div>
+        </div>
+        <div id="under">
+          <img src="img/dollars.png" />
+          <label id="priceTotal">0</label>
+        </div>
+    </div>
+
+
+
+
+    <audio id="tick" autoplay="autoplay">
+      <source src="sound/tick.wav">
+      </source>
+    </audio>
+    <audio id="found" autoplay="autoplay">
+      <source src="sound/found.m4a">
+      </source>
+    </audio>
   </div>
 </body>
+
 </html>
