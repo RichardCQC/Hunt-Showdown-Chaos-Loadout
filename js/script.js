@@ -725,18 +725,12 @@ function activateEvents() {
 	});
 }
 
-function findFamilyOf(searchin, sub, searchfor) {
-	var index = searchin.findIndex(function(family, index) {
-		if ((family[sub].findIndex(function(item, index) {
-			return (item.name == searchfor.name);
-		})) != -1) {
-			return true;
-		} else {
-			return false;
-		}
+function findFamilyOf(searching, sub, searchFor) {
+	const index = searching.findIndex((family) => {
+		return (family[sub].findIndex((item) => item.name === searchFor.name)) !== -1;
 	});
 
-	return (index != -1 ? searchin[index] : null);
+	return (index !== -1 ? searching[index] : null);
 }
 
 function isToolUnavailable(candidates){
@@ -867,8 +861,9 @@ function previous(toRoll){
 
 	if (toRoll.substring(0, 4) == "tool") {
 		var tnum = parseInt(toRoll.substring(4))-1;
+		console.log(store);
 		var prev = store.tools[tnum];
-
+		if (!prev) return;
 		var fam = findFamilyOf(toolFamilies, "tools", store.tools[tnum]);
 		var toolIndex = fam.tools.findIndex((t) => t.name == store.tools[tnum].name);
 		var newTool = prev;
@@ -887,8 +882,9 @@ function previous(toRoll){
 
 	if (toRoll.substring(0, 10) == "consumable") {
 		var cnum = parseInt(toRoll.substring(10))-1;
-
-		var fam   = findFamilyOf(consumableFamilies, "consumables", store.consumables[cnum]);
+		const prev = store.consumables[cnum];
+		if (!prev) return;
+		var fam   = findFamilyOf(consumableFamilies, "consumables", prev);
 		var consumableIndex = fam.consumables.findIndex((c) => c.name == store.consumables[cnum].name);
 		
 		store.consumables[cnum] = (consumableIndex > 0 ? fam.consumables[consumableIndex-1] : fam.consumables[consumableIndex]);
