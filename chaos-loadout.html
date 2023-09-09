@@ -9,8 +9,8 @@
   <meta name="description" content="A random loadout generator for the game Hunt : Showdown.">
   <meta name="author" content="RichardCQC">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="css/style.css?v=3">
-  <script src="js/script.js?v=10"></script>
+  <link rel="stylesheet" href="css/style.css?v=4">
+  <script src="js/script.js?v=11"></script>
   <script>
     window.onload = function() {
       setParameterValues();
@@ -56,6 +56,7 @@
       <span id="changelog">
         <div class="changelog-title">Changelog</div>
         <ul>
+          <li>2023-09-08 - Updated for Hunt 1.13.1</li>
           <li>2023-03-08 - Updated for Hunt 1.11.0.4 patch.</li>
           <li>2022-10-25 - Updated for Hunt 1.10 patch.</li>
           <li>2022-08-01 - Updated for Serpent Moon Event.</li>
@@ -80,41 +81,43 @@
         <label for="rank">Bloodline Rank:</label>
         <input type="number" id="rank" name="rank" min="1" max="100" value="100">
         <br><br>
-        <div class="option">
-          <label class="switch">
-            <input type="checkbox" id="dual" name="dual" checked />
-            <span class="slider round"></span>
-          </label>
-          <label for="dual">Dual Wield</label>
-        </div>
-        <div class="option">
-          <label class="switch">
-            <input type="checkbox" id="dup" name="dup" checked />
-            <span class="slider round"></span>
-          </label>
-          <label for="dup">Duplicate Weapons</label>
-        </div>
-        <div class="option">
-          <label class="switch">
-            <input type="checkbox" id="customammo" name="customammo" checked />
-            <span class="slider round"></span>
-          </label>
-          <label for="customammo">Custom Ammo</label>
-        </div>
-        <br><br>
-        <div class="option">
-          <label class="switch">
-            <input type="checkbox" id="quartermaster" name="quartermaster" />
-            <span class="slider round"></span>
-          </label>
-          <label for="quartermaster">Quartermaster</label>
-        </div>
-        <div class="option">
-          <label class="switch">
-            <input type="checkbox" id="med" name="med"/>
-            <span class="slider round"></span>
-          </label>
-          <label for="med">Force Medkit</label>
+        <div id="option-panel">
+          <div class="option">
+            <label class="switch">
+              <input type="checkbox" id="dual" name="dual" checked />
+              <span class="slider round"></span>
+            </label>
+            <label for="dual">Dual Wield</label>
+          </div>
+          <div class="option">
+            <label class="switch">
+              <input type="checkbox" id="dup" name="dup" checked />
+              <span class="slider round"></span>
+            </label>
+            <label for="dup">Duplicate Weapons</label>
+          </div>
+          <div class="option">
+            <label class="switch">
+              <input type="checkbox" id="customammo" name="customammo" checked />
+              <span class="slider round"></span>
+            </label>
+            <label for="customammo">Custom Ammo</label>
+          </div>
+          <br><br>
+          <div class="option">
+            <label class="switch">
+              <input type="checkbox" id="quartermaster" name="quartermaster" />
+              <span class="slider round"></span>
+            </label>
+            <label for="quartermaster">Quartermaster</label>
+          </div>
+          <div class="option">
+            <label class="switch">
+              <input type="checkbox" id="med" name="med"/>
+              <span class="slider round"></span>
+            </label>
+            <label for="med">Force Medkit</label>
+          </div>
         </div>
         <br><br>
         <button id="generate_loadout" type="submit" class="red-button">Generate Loadout</button>
@@ -228,6 +231,8 @@
   <img src="img/cent.jpg" width="1" height="1"/>
   <img src="img/cent_snip.jpg" width="1" height="1"/>
   <img src="img/cent_tra.jpg" width="1" height="1"/>
+  <img src="img/cent_sho.jpg" width="1" height="1"/>
+  <img src="img/cent_sho_sil.jpg" width="1" height="1"/>
   <img src="img/chaos.jpg" width="1" height="1"/>
   <img src="img/choke.jpg" width="1" height="1"/>
   <img src="img/concertina.jpg" width="1" height="1"/>
@@ -248,6 +253,7 @@
   <img src="img/dolch_dual.jpg" width="1" height="1"/>
   <img src="img/dolch_prec.jpg" width="1" height="1"/>
   <img src="img/dollars.png" width="1" height="1"/>
+  <img src="img/drilling.jpg" width="1" height="1"/>
   <img src="img/dusters.jpg" width="1" height="1"/>
   <img src="img/dynamite.jpg" width="1" height="1"/>
   <img src="img/dynamite_big.jpg" width="1" height="1"/>
@@ -263,12 +269,15 @@
   <img src="img/flash.jpg" width="1" height="1"/>
   <img src="img/frag.jpg" width="1" height="1"/>
   <img src="img/fusees.jpg" width="1" height="1"/>
+  <img src="img/hammer.jpg" width="1" height="1"/>
   <img src="img/hive.jpg" width="1" height="1"/>
   <img src="img/knife.jpg" width="1" height="1"/>
   <img src="img/knife_heavy.jpg" width="1" height="1"/>
   <img src="img/knife_throw.jpg" width="1" height="1"/>
   <img src="img/knuckle.jpg" width="1" height="1"/>
   <img src="img/krag.jpg" width="1" height="1"/>
+  <img src="img/krag_bay.jpg" width="1" height="1"/>
+  <img src="img/krag_snip.jpg" width="1" height="1"/>
   <img src="img/lamp.jpg" width="1" height="1"/>
   <img src="img/lebel.jpg" width="1" height="1"/>
   <img src="img/lebel_mark.jpg" width="1" height="1"/>
@@ -277,12 +286,14 @@
   <img src="img/lemat.jpg" width="1" height="1"/>
   <img src="img/lemat_dual.jpg" width="1" height="1"/>
   <img src="img/lemat_carb.jpg" width="1" height="1"/>
+  <img src="img/lemat_up.jpg" width="1" height="1"/>
   <img src="img/machete.jpg" width="1" height="1"/>
   <img src="img/martini.jpg" width="1" height="1"/>
   <img src="img/martini_dead.jpg" width="1" height="1"/>
   <img src="img/martini_mark.jpg" width="1" height="1"/>
   <img src="img/martini_rip.jpg" width="1" height="1"/>
   <img src="img/martini_ir.jpg" width="1" height="1"/>
+  <img src="img/medpack.jpg" width="1" height="1"/>
   <img src="img/mosin.jpg" width="1" height="1"/>
   <img src="img/mosin_avto.jpg" width="1" height="1"/>
   <img src="img/mosin_bay.jpg" width="1" height="1"/>
@@ -298,6 +309,8 @@
   <img src="img/nagant_sup_dual.jpg" width="1" height="1"/>
   <img src="img/new.jpg" width="1" height="1"/>
   <img src="img/new_dual.jpg" width="1" height="1"/>
+  <img src="img/new_swi.jpg" width="1" height="1"/>
+  <img src="img/new_swi_dual.jpg" width="1" height="1"/>
   <img src="img/nitro.jpg" width="1" height="1"/>
   <img src="img/officer.jpg" width="1" height="1"/>
   <img src="img/officer_bra.jpg" width="1" height="1"/>
@@ -330,6 +343,7 @@
   <img src="img/scottfield_prec.jpg" width="1" height="1"/>
   <img src="img/scottfield_dual.jpg" width="1" height="1"/>
   <img src="img/slate.jpg" width="1" height="1"/>
+  <img src="img/slate-rip.jpg" width="1" height="1"/>
   <img src="img/sparks.jpg" width="1" height="1"/>
   <img src="img/sparks_pistol.jpg" width="1" height="1"/>
   <img src="img/sparks_pistol_dual.jpg" width="1" height="1"/>
@@ -345,11 +359,13 @@
   <img src="img/springfield_mark.jpg" width="1" height="1"/>
   <img src="img/spyglass.jpg" width="1" height="1"/>
   <img src="img/stalker.jpg" width="1" height="1"/>
+  <img src="img/stalker_cho.jpg" width="1" height="1"/>
   <img src="img/stamina.jpg" width="1" height="1"/>
   <img src="img/stamina_weak.jpg" width="1" height="1"/>
   <img src="img/sticky.jpg" width="1" height="1"/>
   <img src="img/terminus.jpg" width="1" height="1"/>
   <img src="img/terminus_hand.jpg" width="1" height="1"/>
+  <img src="img/toolbox.jpg" width="1" height="1"/>
   <img src="img/trip_alert.jpg" width="1" height="1"/>
   <img src="img/trip_con.jpg" width="1" height="1"/>
   <img src="img/trip_poi.jpg" width="1" height="1"/>

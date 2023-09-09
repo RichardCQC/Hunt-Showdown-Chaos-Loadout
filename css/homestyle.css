@@ -33,7 +33,7 @@ html, body {
     text-shadow: 0 1px 0 #000000;
     text-decoration: none;
     display:inline-block;
-    min-width: 200px;
+    min-width: 300px;
     padding-top: 15px;
     padding-bottom: 15px;
   }
@@ -56,8 +56,8 @@ html, body {
   }
   
   .header img {
-      max-height: 189px;
-      max-width: 1920px;
+      height: 189px;
+      width: 100%;
   }
 
   .footer {
