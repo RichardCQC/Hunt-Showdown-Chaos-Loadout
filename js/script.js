@@ -11,6 +11,7 @@ var customAmmoPercentage = 50;
 var sound = true;
 var animation = true;
 var forceMedkit = false;
+var loadoutPriceLimit;
 
 //Variables for result
 var weapon1 = null;
@@ -484,25 +485,36 @@ function generate() {
 	setParameterValues();
 	setMaxSize();
 	if (rank <= 100 && rank >= 1) {
-		emptyStore()
-		updateRemainingSize();
-		if (generateWeapon1) {
-			weapon1 = generateWeapon();
+		var generationCount = 1;
+		do{
+			emptyStore();
 			updateRemainingSize();
+			if (generateWeapon1) {
+				weapon1 = generateWeapon();
+				updateRemainingSize();
+				
+			} 
+			if (generateWeapon2) {
+				weapon2 = generateWeapon();
+				updateRemainingSize();
+				
+			}
+			randomizeSlots();
+			generationCount ++;
+		} while(calculatePrice() > loadoutPriceLimit && generationCount < 10000);
+
+		if (generateWeapon1) {
 			document.getElementById("w1").src = weapon1.image;
 			document.getElementById("w1").alt = weapon1.name;
 			document.getElementById("w1a1").src = weapon1.ammo1.ammo;
 			document.getElementById("w1a2").src = weapon1.ammo2.ammo;
-		} 
+		}
 		if (generateWeapon2) {
-			weapon2 = generateWeapon();
-			updateRemainingSize();
 			document.getElementById("w2").src = weapon2.image;
 			document.getElementById("w2").alt = weapon2.name;
 			document.getElementById("w2a1").src = weapon2.ammo1.ammo;
 			document.getElementById("w2a2").src = weapon2.ammo2.ammo;
 		}
-		randomizeSlots();
 		updateSlots();
 		updateLoadoutPrice();
 	}
@@ -606,6 +618,7 @@ function setParameterValues() {
 	sound = document.getElementById("sound").checked;
 	animation = document.getElementById("anim").checked;
 	rank = document.getElementById("rank").value;
+	loadoutPriceLimit = document.getElementById("priceLimit").value;
 }
 
 function generateWeapon() {
@@ -618,7 +631,7 @@ function generateWeapon() {
 				weapon = null;
 			}
 		}
-		if (allowDualWield) {
+		if (allowDualWield && weapon != null) {
 			if (weapon.dualWield){
 				if (Math.random() < 0.5){
 					weapon = null;
@@ -883,7 +896,6 @@ function previous(toRoll){
 
 	if (toRoll.substring(0, 4) == "tool") {
 		var tnum = parseInt(toRoll.substring(4))-1;
-		console.log(store);
 		var prev = store.tools[tnum];
 		if (!prev) return;
 		var fam = findFamilyOf(toolFamilies, "tools", store.tools[tnum]);
@@ -983,40 +995,39 @@ function clearUpdateStack(){
 		weapons: [] /* not used, but needed for checkboxes */
 	}
 }
-  
-function toggleMenu(){
-	var menu = document.getElementById("menu");
-	var container = document.getElementsByClassName("option-menu")[0];
-	if (menu.style.display === "inline-block"){
-		menu.style.display = "none";
-		menu.style.minWidth = "none";
-		menu.style.paddingBottom = "0px";
-		container.classList.remove("menu-open");
-	} else {
-		menu.style.display = "inline-block";
-		menu.style.minWidth = "650px";
-		menu.style.paddingBottom = "20px";
-		container.classList.add("menu-open");
-	}
-}
 
 function toggleChangelog(){
 	var menu = document.getElementById("changelog");
 	var container = document.getElementsByClassName("changelog-menu")[0];
+	var homebutton = document.getElementById("homebutton");
 	if (menu.style.display === "inline-block"){
 		menu.style.display = "none";
+		homebutton.style.display = "none";
 		container.classList.remove("menu-open");
 	} else {
 		menu.style.display = "inline-block";
+		homebutton.style.display = "inline-block";
 		container.classList.add("menu-open");
 	}
 }
 
-function updateLoadoutPrice(){
-	var container = document.getElementById("under");
-	if (container.style.display !== "block"){
+function toggleShowOptions(){
+	var text = document.getElementById("showOptionText");
+	var container = document.getElementById("option-container");
+	if(container.style.display === "block"){
+		text.innerHTML = "Show Options"
+		container.style.display = "none";
+		text.style.borderBottomLeftRadius = "5px" ;
+		text.style.borderBottomRightRadius = "5px" ;
+	} else {
 		container.style.display = "block";
+		text.innerHTML = "Hide Options";
+		text.style.borderBottomLeftRadius = "0px" ;
+		text.style.borderBottomRightRadius = "0px" ;
 	}
+}
+
+function calculatePrice(){
 	var price = 0;
 	if(weapon1 != null){
 		price += weapon1.price;
@@ -1038,5 +1049,13 @@ function updateLoadoutPrice(){
 			price += t.price
 		}
 	})
-	document.getElementById("priceTotal").innerText = price;
+	return price;
+}
+
+function updateLoadoutPrice(){
+	var container = document.getElementById("under");
+	if (container.style.display !== "block"){
+		container.style.display = "block";
+	}
+	document.getElementById("priceTotal").innerText = calculatePrice();
 }
