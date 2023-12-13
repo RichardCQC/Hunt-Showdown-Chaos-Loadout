@@ -10,7 +10,7 @@
   <meta name="author" content="RichardCQC">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="css/style.css?v=4">
-  <script src="js/script.js?v=11"></script>
+  <script src="js/script.js?v=12"></script>
   <script>
     window.onload = function() {
       setParameterValues();
@@ -24,7 +24,7 @@
 
 <body>
   <div class="header">
-    <img src="img/banner.jpg" alt="Hunt Showdown Loadout Generator"/>
+    <img src="img/banner_event.jpg" alt="Hunt Showdown Loadout Generator"/>
   </div>
   <div class="main-content">
     <div class="changelog-menu">
@@ -49,6 +49,7 @@
         </div>
         <div class="changelog-title">Changelog</div>
         <ul>
+          <li>2023-12-13 - Updated for Hunt 1.15 (Tide of Desolation)</li>
           <li>2023-09-09 - Changed the option menu and added price limit slider</li>
           <li>2023-09-08 - Updated for Hunt 1.13.1</li>
           <li>2023-03-08 - Updated for Hunt 1.11.0.4 patch.</li>
@@ -174,25 +175,21 @@
               <input type="checkbox" class="tool" id="tool1" checked />
               <label class="noselect" for="tool1"><img id="t1" src="img/emptySmall.jpg"/></label> 
               <img class="hover1" src="img/reroll.jpg" onclick="reroll('tool1')" />
-              <img class="hover2" src="img/previous.jpg" onclick="previous('tool1')" />
             </div>
             <div>
               <input type="checkbox" class="tool" id="tool2" checked />
               <label class="noselect" for="tool2"><img id="t2" src="img/emptySmall.jpg"/></label> 
               <img class="hover1" src="img/reroll.jpg" onclick="reroll('tool2')" />
-              <img class="hover2" src="img/previous.jpg" onclick="previous('tool2')" />
             </div>
             <div>
               <input type="checkbox" class="tool" id="tool3" checked />
               <label class="noselect" for="tool3"><img id="t3" src="img/emptySmall.jpg"/></label>
               <img class="hover1" src="img/reroll.jpg" onclick="reroll('tool3')" />
-              <img class="hover2" src="img/previous.jpg" onclick="previous('tool3')" />
             </div>
             <div>
               <input type="checkbox" class="tool" id="tool4" checked />
               <label class="noselect" for="tool4"><img id="t4" src="img/emptySmall.jpg"/></label> 
               <img class="hover1" src="img/reroll.jpg" onclick="reroll('tool4')" />
-              <img class="hover2" src="img/previous.jpg" onclick="previous('tool4')" />
             </div>
           </li>
           <label>Consumables</label>
@@ -201,25 +198,21 @@
               <input type="checkbox" id="consumable1" checked />
               <label class="noselect" for="consumable1"><img id="c1" src="img/emptySmall.jpg"/></label>
               <img class="hover1" src="img/reroll.jpg" onclick="reroll('consumable1')" />
-              <img class="hover2" src="img/previous.jpg" onclick="previous('consumable1')" />
             </div>
             <div>
               <input type="checkbox" id="consumable2" checked />
               <label class="noselect" for="consumable2"><img id="c2" src="img/emptySmall.jpg"/></label> 
               <img class="hover1" src="img/reroll.jpg" onclick="reroll('consumable2')" />
-              <img class="hover2" src="img/previous.jpg" onclick="previous('consumable2')" />
             </div>
             <div>
               <input type="checkbox" id="consumable3" checked />
               <label class="noselect" for="consumable3"><img id="c3" src="img/emptySmall.jpg"/></label> 
               <img class="hover1" src="img/reroll.jpg" onclick="reroll('consumable3')" />
-              <img class="hover2" src="img/previous.jpg" onclick="previous('consumable3')" />
             </div>
             <div>
               <input type="checkbox" id="consumable4" checked />
               <label class="noselect" for="consumable4"><img id="c4" src="img/emptySmall.jpg"/></label> 
               <img class="hover1" src="img/reroll.jpg" onclick="reroll('consumable4')" />
-              <img class="hover2" src="img/previous.jpg" onclick="previous('consumable4')" />
             </div>
           </li>
           <div id="under">
@@ -237,18 +230,22 @@
   <img src="img/antidote_weak.jpg" width="1" height="1"/>
   <img src="img/axe.jpg" width="1" height="1"/>
   <img src="img/axe_throw.jpg" width="1" height="1"/>
-  <img src="img/banner.jpg" width="1" height="1"/>
+  <img src="img/banner_event.jpg" width="1" height="1"/>
   <img src="img/bannerhome.jpg" width="1" height="1"/>
   <img src="img/bannerhometext.png" width="1" height="1"/>
+  <img src="img/baseball.jpg" width="1" height="1"/>
   <img src="img/berthier.jpg" width="1" height="1"/>
   <img src="img/berthier_ri.jpg" width="1" height="1"/>
   <img src="img/berthier_dead.jpg" width="1" height="1"/>
+  <img src="img/berthier_mark.jpg" width="1" height="1"/>
   <img src="img/bomb_lance.jpg" width="1" height="1"/>
   <img src="img/bornheim.jpg" width="1" height="1"/>
   <img src="img/bornheim_dual.jpg" width="1" height="1"/>
   <img src="img/bornheim_ext.jpg" width="1" height="1"/>
   <img src="img/bornheim_ext_dual.jpg" width="1" height="1"/>
   <img src="img/bornheim_match.jpg" width="1" height="1"/>
+  <img src="img/bornheim_sup.jpg" width="1" height="1"/>
+  <img src="img/bornheim_sup_dual.jpg" width="1" height="1"/>
   <img src="img/bow.jpg" width="1" height="1"/>
   <img src="img/cent.jpg" width="1" height="1"/>
   <img src="img/cent_snip.jpg" width="1" height="1"/>
@@ -264,6 +261,8 @@
   <img src="img/conversion_dual.jpg" width="1" height="1"/>
   <img src="img/conversion_up.jpg" width="1" height="1"/>
   <img src="img/conversion_up_dual.jpg" width="1" height="1"/>
+  <img src="img/conversion_up_prec.jpg" width="1" height="1"/>
+  <img src="img/conversion_up_prec_dead.jpg" width="1" height="1"/>
   <img src="img/crossbow.jpg" width="1" height="1"/>
   <img src="img/crossbow_hand.jpg" width="1" height="1"/>
   <img src="img/crown.jpg" width="1" height="1"/>
@@ -271,11 +270,18 @@
   <img src="img/decoy_blank.jpg" width="1" height="1"/>
   <img src="img/decoy_fuses.jpg" width="1" height="1"/>
   <img src="img/derringer.jpg" width="1" height="1"/>
+  <img src="img/derringer_pen.jpg" width="1" height="1"/>
   <img src="img/dolch.jpg" width="1" height="1"/>
+  <img src="img/dolch_claw.jpg" width="1" height="1"/>
+  <img src="img/dolch_claw_dual.jpg" width="1" height="1"/>
+  <img src="img/dolch_dead.jpg" width="1" height="1"/>
+  <img src="img/dolch_dead_dual.jpg" width="1" height="1"/>
   <img src="img/dolch_dual.jpg" width="1" height="1"/>
   <img src="img/dolch_prec.jpg" width="1" height="1"/>
   <img src="img/dollars.png" width="1" height="1"/>
   <img src="img/drilling.jpg" width="1" height="1"/>
+  <img src="img/drilling_hand.jpg" width="1" height="1"/>
+  <img src="img/drilling_hatc.jpg" width="1" height="1"/>
   <img src="img/dusters.jpg" width="1" height="1"/>
   <img src="img/dynamite.jpg" width="1" height="1"/>
   <img src="img/dynamite_big.jpg" width="1" height="1"/>
@@ -293,6 +299,7 @@
   <img src="img/fusees.jpg" width="1" height="1"/>
   <img src="img/hammer.jpg" width="1" height="1"/>
   <img src="img/hive.jpg" width="1" height="1"/>
+  <img src="img/katana.jpg" width="1" height="1"/>
   <img src="img/knife.jpg" width="1" height="1"/>
   <img src="img/knife_heavy.jpg" width="1" height="1"/>
   <img src="img/knife_throw.jpg" width="1" height="1"/>
@@ -308,6 +315,7 @@
   <img src="img/lemat.jpg" width="1" height="1"/>
   <img src="img/lemat_dual.jpg" width="1" height="1"/>
   <img src="img/lemat_carb.jpg" width="1" height="1"/>
+  <img src="img/lemat_carb_mark.jpg" width="1" height="1"/>
   <img src="img/lemat_up.jpg" width="1" height="1"/>
   <img src="img/machete.jpg" width="1" height="1"/>
   <img src="img/martini.jpg" width="1" height="1"/>
@@ -344,6 +352,8 @@
   <img src="img/pax_claw.jpg" width="1" height="1"/>
   <img src="img/pax_claw_dual.jpg" width="1" height="1"/>
   <img src="img/pax_dual.jpg" width="1" height="1"/>
+  <img src="img/pax_true.jpg" width="1" height="1"/>
+  <img src="img/pax_true_dual.jpg" width="1" height="1"/>
   <img src="img/poison.jpg" width="1" height="1"/>
   <img src="img/previous.jpg" width="1" height="1"/>
   <img src="img/regen.jpg" width="1" height="1"/>
@@ -375,6 +385,7 @@
   <img src="img/specter_bay.jpg" width="1" height="1"/>
   <img src="img/specter_com.jpg" width="1" height="1"/>
   <img src="img/springfield.jpg" width="1" height="1"/>
+  <img src="img/springfield_bay.jpg" width="1" height="1"/>
   <img src="img/springfield_com.jpg" width="1" height="1"/>
   <img src="img/springfield_com_dead.jpg" width="1" height="1"/>
   <img src="img/springfield_com_str.jpg" width="1" height="1"/>
@@ -382,6 +393,7 @@
   <img src="img/spyglass.jpg" width="1" height="1"/>
   <img src="img/stalker.jpg" width="1" height="1"/>
   <img src="img/stalker_cho.jpg" width="1" height="1"/>
+  <img src="img/stalker_fire.jpg" width="1" height="1"/>
   <img src="img/stamina.jpg" width="1" height="1"/>
   <img src="img/stamina_weak.jpg" width="1" height="1"/>
   <img src="img/sticky.jpg" width="1" height="1"/>
@@ -393,6 +405,7 @@
   <img src="img/trip_poi.jpg" width="1" height="1"/>
   <img src="img/vetterli.jpg" width="1" height="1"/>
   <img src="img/vetterli_bay.jpg" width="1" height="1"/>
+  <img src="img/vetterli_cyc.jpg" width="1" height="1"/>
   <img src="img/vetterli_dead.jpg" width="1" height="1"/>
   <img src="img/vetterli_mark.jpg" width="1" height="1"/>
   <img src="img/vetterli_sup.jpg" width="1" height="1"/>
