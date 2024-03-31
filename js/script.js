@@ -90,6 +90,17 @@ var gunFamilies = new Array(
 		)
 	),
 	new GunFamily(1, 3, new Array(
+		new Gun(3, false, "Caldwell Marathon", 68, "img/marathon.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)]),
+		new Gun(3, false, "Caldwell Marathon Swift", 95, "img/marathon_swi.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)])
+		)
+	),
+	new GunFamily(1, 3, new Array(
+		new Gun(3, false, "Mako 1895 Carbine", 360, "img/mako.jpg", false, [new AmmoType("img/ammo/l.png",0), new AmmoType("img/ammo/l-e.png", 100), new AmmoType("img/ammo/l-f.png", 60)]),
+		new Gun(3, false, "Mako 1895 Carbine Claw", 375, "img/mako_claw.jpg", false, [new AmmoType("img/ammo/l.png",0), new AmmoType("img/ammo/l-e.png", 100), new AmmoType("img/ammo/l-f.png", 60)]),
+		new Gun(3, false, "Mako 1895 Carbine Aperture", 385, "img/mako_ap.jpg", false, [new AmmoType("img/ammo/l.png",0), new AmmoType("img/ammo/l-e.png", 100), new AmmoType("img/ammo/l-f.png", 60)])
+		)
+	),
+	new GunFamily(1, 3, new Array(
 			new Gun(3, false, "Lebel 1886", 397, "img/lebel.jpg", false, [new AmmoType("img/ammo/l.png",0), new AmmoType("img/ammo/l-i.png", 70), new AmmoType("img/ammo/l-s.png", 150)]),
 			new Gun(3, false, "Lebel 1886 Aperture", 425, "img/lebel_ap.jpg", false, [new AmmoType("img/ammo/l.png",0), new AmmoType("img/ammo/l-i.png", 70), new AmmoType("img/ammo/l-s.png", 150)]),
 			new Gun(3, false, "Lebel 1886 Talon", 422, "img/lebel_tal.jpg", false, [new AmmoType("img/ammo/l.png",0), new AmmoType("img/ammo/l-i.png", 70), new AmmoType("img/ammo/l-s.png", 150)]),
@@ -238,8 +249,8 @@ new GunFamily(1, 1, new Array(
 		)
 	),
 	new GunFamily(1, 2, new Array(
-			new Gun(3, false, "Caldwell Rival 78", 150, "img/rival.jpg", false, [new AmmoType("img/ammo/s.png", 0), new AmmoType("img/ammo/s-p.png", 10), new AmmoType("img/ammo/s-f.png", 40), new AmmoType("img/ammo/s-sl.png", 130)]),
-			new Gun(2, false, "Caldwell Rival 78 Handcannon", 125, "img/rival_hand.jpg", false, [new AmmoType("img/ammo/s.png", 0), new AmmoType("img/ammo/s-p.png", 10), new AmmoType("img/ammo/s-f.png", 40), new AmmoType("img/ammo/s-sl.png", 130)])
+			new Gun(3, false, "Caldwell Rival 78", 150, "img/rival.jpg", false, [new AmmoType("img/ammo/s.png", 0), new AmmoType("img/ammo/s-p.png", 10), new AmmoType("img/ammo/s-d.png", 20), new AmmoType("img/ammo/s-f.png", 40), new AmmoType("img/ammo/s-sl.png", 130)]),
+			new Gun(2, false, "Caldwell Rival 78 Handcannon", 125, "img/rival_hand.jpg", false, [new AmmoType("img/ammo/s.png", 0), new AmmoType("img/ammo/s-p.png", 10), new AmmoType("img/ammo/s-d.png", 20), new AmmoType("img/ammo/s-f.png", 40), new AmmoType("img/ammo/s-sl.png", 130)])
 		)
 	),
 	new GunFamily(1, 2, new Array(
@@ -259,7 +270,7 @@ new GunFamily(1, 1, new Array(
 		)
 	),
 	new GunFamily(1, 3, new Array(
-			new Gun(3, false, "Crown And King Auto-5", 600, "img/crown.jpg", false, [new AmmoType("img/ammo/s.png", 0), new AmmoType("img/ammo/s-p.png", 10), new AmmoType("img/ammo/s-sl.png", 130)])
+			new Gun(3, false, "Crown And King Auto-5", 600, "img/crown.jpg", false, [new AmmoType("img/ammo/s.png", 0), new AmmoType("img/ammo/s-p.png", 10), new AmmoType("img/ammo/s-f.png", 40), new AmmoType("img/ammo/s-sl.png", 130)])
 		)
 	),
 	new GunFamily(1, 2, new Array(
