@@ -327,6 +327,7 @@ var toolList = new Array(
 	new Tool(25, "Knuckle Knife", 50, "img/knuckle.jpg"),
 	new Tool(29, "Concertina Trip Mine", 90, "img/trip_con.jpg"),
 	new Tool(29, "Poison Trip Mine", 30, "img/trip_poi.jpg"),
+	new Tool(33, "Throwing Spear", 65, "img/spear.jpg"),
 	new Tool(35, "Alert Trip Mine", 30, "img/trip_alert.jpg"),
 	new Tool(52, "Blank Fire Decoys", 45, "img/decoy_blank.jpg"),
 	new Tool(52, "Decoy Fuses", 30, "img/decoy_fuses.jpg")
