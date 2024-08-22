@@ -95,7 +95,7 @@ html, body {
 }
 
 .loadout :checked + label img {
-  box-shadow: 0 0 10px red;
+  box-shadow: 0 0 10px #216942;
 }
 
 .loadout div {
@@ -104,26 +104,26 @@ html, body {
 }
 
 button.red-button {
-    background: #8B0000; 
-    border: 1px solid #8B0000;
+    background: #216942; 
+    border: 1px solid #216942;
     color: white;
     line-height: 25px;
     width: 200px;
     padding: 5px 10px;
     border-radius: 2px;
     outline: none;
-    text-shadow: 0 1px 0 #C04131;
+    text-shadow: 0 1px 0 #61b186;
 
 }
 
 button.red-button:hover {
-     background: #FF0000;
-     border: 1px solid #FF0000;
+     background: #20a15c;
+     border: 1px solid #20a15c;
 }
 
 button.red-button:active {
-    background: #8B0000;
-    border: 1px solid #8B0000;
+    background: #216942;
+    border: 1px solid #216942;
 }
 
 button:disabled {
@@ -250,11 +250,11 @@ img.hover1:hover, img.hover2:hover {
 }
 
 input:checked + .slider {
-  background-color: #8B0000;
+  background-color: #216942;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #8B0000;
+  box-shadow: 0 0 1px #216942;
 }
 
 input:checked + .slider:before {
@@ -274,7 +274,7 @@ input:checked + .slider:before {
 }
 
 input[type="number"] {
-  background-color: #8B0000;
+  background-color: #216942;
   color: white;
   border-style: solid;
   border-color: black;
@@ -309,6 +309,7 @@ div.changelog-menu {
 
 .changelog-title{
   text-align: center;
+  font-weight: bold;
 }
 
 #nav-toggle {
@@ -358,15 +359,15 @@ div#under > label {
 }
 
 .linkbutton {
-    background: #8B0000; 
-    border: 1px solid #8B0000;
+    background: #216942; 
+    border: 1px solid #216942;
     color: white;
     line-height: 25px;
     width: 200px;
     padding: 5px 10px;
     border-radius: 10px;
     outline: none;
-    text-shadow: 0 1px 0 #C04131;
+    text-shadow: 0 1px 0 #61b186;
     text-decoration: none;
 }
 
@@ -386,7 +387,7 @@ input[type="range"] {
 }
 
 input[type="range"] {
-	color: #ef233c;
+	color: #216942;
 	--thumb-height: 0.700em;
 	--track-height: 0.125em;
 	--track-color: rgba(0, 0, 0, 0.2);
@@ -396,7 +397,7 @@ input[type="range"] {
 }
 
 input[type="range"] {
-	color: #8B0000;
+	color: #216942;
 	--track-color: rgba(255, 255, 255, 0.1);
 }
 
