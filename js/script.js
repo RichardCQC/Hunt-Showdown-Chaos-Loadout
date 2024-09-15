@@ -57,7 +57,7 @@ var gunFamilies = new Array(
 		)
 	),
 	new GunFamily(1, 3, new Array(
-			new Gun(3, false, "Bomb Lance", 199, "img/bomblance.jpg", false, [new AmmoType("img/ammo/bomb.png", 0), new AmmoType("img/ammo/bomb-d.png", 10), new AmmoType("img/ammo/bomb-sl.png", 5), new AmmoType("img/ammo/bomb-wax.png", 50)])
+			new Gun(3, false, "Bomb Lance", 199, "img/bomblance.jpg", true, [new AmmoType("img/ammo/bomb.png", 0), new AmmoType("img/ammo/bomb-d.png", 10), new AmmoType("img/ammo/bomb-sl.png", 5), new AmmoType("img/ammo/bomb-wax.png", 50)])
 		)
 	),
 	new GunFamily(1, 1, new Array(
