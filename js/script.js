@@ -340,6 +340,7 @@ var toolList = new Array(
 	new Tool(1, "Decoys", 6, "img/decoys.jpg"),
 	new Tool(1, "Spyglass", 8, "img/spyglass.jpg"),
 	new Tool(1, "Quad Derringer", 30, "img/derringer.jpg"),
+	new Tool(1, "Bear Traps", 70, "img/bear.jpg"),
 	new Tool(2, "Throwing Knives", 30, "img/throwing_knife.jpg"),
 	new Tool(5, "Heavy Knife", 20,"img/knife_heavy.jpg"),
 	new Tool(8, "Throwing Axe", 50, "img/throwing_axe.jpg"),
