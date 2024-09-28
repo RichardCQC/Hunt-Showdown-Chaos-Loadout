@@ -638,7 +638,7 @@ function generateAmmo(weapon){
 		if(weapon.singleShot){
 			if(weapon.name.includes("eMat") || weapon.name.includes("aymaker")){
 				weapon.ammo2 = weapon.ammoTypes[3];
-			} if(weapon.name.includes("rilling")){
+			} else if(weapon.name.includes("rilling")){
 				weapon.ammo2 = weapon.ammoTypes[4]
 			} else {
 				weapon.ammo2 = weapon.ammoTypes[0];
@@ -652,7 +652,7 @@ function generateAmmo(weapon){
 					do {
 						weapon.ammo1 = weapon.ammoTypes[getRandomInt(2)]
 					} while(weapon.ammo1 == weapon.ammoTypes[0]);
-				} if(weapon.name.includes("rilling")){
+				} else if(weapon.name.includes("rilling")){
 					do {
 						weapon.ammo1 = weapon.ammoTypes[getRandomInt(3)]
 					} while(weapon.ammo1 == weapon.ammoTypes[0]);
@@ -664,13 +664,13 @@ function generateAmmo(weapon){
 			}
 			if (weapon.singleShot){
 				if (getRandomInt(100) >= customAmmoPercentage){
-					if(weapon.name.includes("LeMat") || weapon.name.includes("aymaker")){
+					if(weapon.name.includes("eMat") || weapon.name.includes("aymaker")){
 						var rand = 0;
 						while(rand < 3){
 							rand = getRandomInt(weapon.ammoTypes.length);
 							weapon.ammo2 = weapon.ammoTypes[rand];
 						}
-					} if(weapon.name.includes("rilling")){
+					} else if(weapon.name.includes("rilling")){
 						var rand = 0;
 						while(rand < 4){
 							rand = getRandomInt(weapon.ammoTypes.length);
