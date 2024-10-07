@@ -340,7 +340,6 @@ var toolList = new Array(
 	new Tool(1, "Decoys", 6, "img/decoys.jpg"),
 	new Tool(1, "Spyglass", 8, "img/spyglass.jpg"),
 	new Tool(1, "Quad Derringer", 30, "img/derringer.jpg"),
-	new Tool(1, "Bear Traps", 70, "img/bear.jpg"),
 	new Tool(2, "Throwing Knives", 30, "img/throwing_knife.jpg"),
 	new Tool(5, "Heavy Knife", 20,"img/knife_heavy.jpg"),
 	new Tool(8, "Throwing Axe", 50, "img/throwing_axe.jpg"),
@@ -350,6 +349,7 @@ var toolList = new Array(
 	new Tool(29, "Concertina Trip Mines", 90, "img/trip_con.jpg"),
 	new Tool(29, "Poison Trip Mine", 30, "img/trip_poison.jpg"),
 	new Tool(33, "Throwing Spear", 150, "img/throwing_spear.jpg"),
+	new Tool(35, "Bear Traps", 70, "img/bear.jpg"),
 	new Tool(35, "Alert Trip Mine", 30, "img/trip_alert.jpg"),
 	new Tool(52, "Blank Fire Decoys", 45, "img/decoys_blank.jpg"),
 	new Tool(52, "Decoy Fuses", 30, "img/decoy_fuses.jpg")
