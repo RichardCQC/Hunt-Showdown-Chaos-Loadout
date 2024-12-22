@@ -40,7 +40,11 @@ var remainingSize = 0;
 
 //Data intialization
 var gunFamilies = new Array( 
-
+	new GunFamily(1, 3, new Array(
+			new Gun(3, false, "1865 Carbine", 70, "img/1865carbine.jpg", true, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/m-f.png", 50)]),
+			new Gun(3, false, "1865 Carbine Aperture", 74, "img/1865carbine_ap.jpg", true, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/m-f.png", 50)])
+		)
+	),
 	new GunFamily(1, 2, new Array(
 			new Gun(3, false, "Auto-5", 600, "img/auto5.jpg", false, [new AmmoType("img/ammo/s.png", 0), new AmmoType("img/ammo/s-p.png", 10), new AmmoType("img/ammo/s-f.png", 40), new AmmoType("img/ammo/s-sl.png", 130)]),
 			new Gun(2, false, "Auto-4 Shorty", 300, "img/auto4.jpg", false, [new AmmoType("img/ammo/s.png", 0), new AmmoType("img/ammo/s-p.png", 10), new AmmoType("img/ammo/s-f.png", 40), new AmmoType("img/ammo/s-sl.png", 130)])
@@ -63,13 +67,13 @@ var gunFamilies = new Array(
 		)
 	),
 	new GunFamily(1, 1, new Array(
-			new Gun(1, false, "Bornheim No. 3", 146, "img/bornheim.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60)]),
-			new Gun(2, true, "Dual Bornheim No. 3", 292, "img/bornheim_dual.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60)]),
-			new Gun(2, false, "Bornheim No. 3 Match", 180, "img/bornheim_match.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60)]),
-			new Gun(1, false, "Bornheim No. 3 Silencer", 174, "img/bornheim_sil.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60)]),
-			new Gun(2, true, "Dual Bornheim No. 3 Silencer", 348, "img/bornheim_sil_dual.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60)]),
-			new Gun(1, false, "Bornheim No. 3 Extended", 203, "img/bornheim_ex.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60)]),
-			new Gun(2, true, "Dual Bornheim No. 3 Extended", 406, "img/bornheim_ex_dual.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60)])
+			new Gun(1, false, "Bornheim No. 3", 146, "img/bornheim.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60)]),
+			new Gun(2, true, "Dual Bornheim No. 3", 292, "img/bornheim_dual.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60)]),
+			new Gun(2, false, "Bornheim No. 3 Match", 180, "img/bornheim_match.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60)]),
+			new Gun(1, false, "Bornheim No. 3 Silencer", 167, "img/bornheim_sil.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60)]),
+			new Gun(2, true, "Dual Bornheim No. 3 Silencer", 334, "img/bornheim_sil_dual.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60)]),
+			new Gun(1, false, "Bornheim No. 3 Extended", 203, "img/bornheim_ex.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60)]),
+			new Gun(2, true, "Dual Bornheim No. 3 Extended", 406, "img/bornheim_ex_dual.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60)])
 		)
 	),
 	new GunFamily(1, 1, new Array(
@@ -77,12 +81,12 @@ var gunFamilies = new Array(
 		)
 	),
 	new GunFamily(1, 2, new Array(
-			new Gun(3, false, "Centennial", 157, "img/centennial.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/m-p.png", 50), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-d.png", 50), new AmmoType("img/ammo/m-h.png", 60)]),
-			new Gun(2, false, "Centennial Shorty", 103, "img/centennial_sho.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/m-p.png", 50), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-d.png", 50), new AmmoType("img/ammo/m-h.png", 60)]),
-			new Gun(3, false, "Centennial Sniper", 181, "img/centennial_snip.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/m-p.png", 50), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-d.png", 50), new AmmoType("img/ammo/m-h.png", 60)]),
-			new Gun(2, false, "Centennial Shorty Silencer", 137, "img/centennial_sho_sil.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/m-p.png", 50), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-d.png", 50), new AmmoType("img/ammo/m-h.png", 60)]),
-			new Gun(3, false, "Centennial Trauma", 267, "img/centennial_trau.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/m-p.png", 50), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-d.png", 50), new AmmoType("img/ammo/m-h.png", 60)]),
-			new Gun(2, false, "Centennial Pointman", 114, "img/centennial_point.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/m-p.png", 50), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-d.png", 50), new AmmoType("img/ammo/m-h.png", 60)])
+			new Gun(3, false, "Centennial", 157, "img/centennial.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/sub.png",10), new AmmoType("img/ammo/m-p.png", 50), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-d.png", 50), new AmmoType("img/ammo/m-h.png", 60)]),
+			new Gun(2, false, "Centennial Shorty", 103, "img/centennial_sho.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/sub.png",10), new AmmoType("img/ammo/m-p.png", 50), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-d.png", 50), new AmmoType("img/ammo/m-h.png", 60)]),
+			new Gun(3, false, "Centennial Sniper", 181, "img/centennial_snip.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/sub.png",10), new AmmoType("img/ammo/m-p.png", 50), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-d.png", 50), new AmmoType("img/ammo/m-h.png", 60)]),
+			new Gun(2, false, "Centennial Shorty Silencer", 118, "img/centennial_sho_sil.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/sub.png",10), new AmmoType("img/ammo/m-p.png", 50), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-d.png", 50), new AmmoType("img/ammo/m-h.png", 60)]),
+			new Gun(3, false, "Centennial Trauma", 267, "img/centennial_trau.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/sub.png",10), new AmmoType("img/ammo/m-p.png", 50), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-d.png", 50), new AmmoType("img/ammo/m-h.png", 60)]),
+			new Gun(2, false, "Centennial Pointman", 114, "img/centennial_point.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/sub.png",10), new AmmoType("img/ammo/m-p.png", 50), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-d.png", 50), new AmmoType("img/ammo/m-h.png", 60)])
 		)
 	),
 	new GunFamily(1, 1, new Array(
@@ -99,6 +103,7 @@ var gunFamilies = new Array(
 	new GunFamily(1, 3, new Array(
 			new Gun(3, false, "Crossbow", 50, "img/crossbow.jpg", true, [new AmmoType("img/ammo/b.png", 0), new AmmoType("img/ammo/b-e.png", 35), new AmmoType("img/ammo/b-s.png", 40), new AmmoType("img/ammo/b-sb.png", 40)]),
 			new Gun(3, false, "Crossbow Deadeye", 53, "img/crossbow_dead.jpg", true, [new AmmoType("img/ammo/b.png", 0), new AmmoType("img/ammo/b-e.png", 35), new AmmoType("img/ammo/b-s.png", 40), new AmmoType("img/ammo/b-sb.png", 40)]),
+			new Gun(3, false, "Chu Ko Nu", 75, "img/chukonu.jpg", false, [new AmmoType("img/ammo/b.png", 0), new AmmoType("img/ammo/ckn-e.png", 50), new AmmoType("img/ammo/ckn-i.png", 25)])
 		)
 	),
 	new GunFamily(1, 1, new Array(
@@ -118,9 +123,9 @@ var gunFamilies = new Array(
 		)
 	),
 	new GunFamily(1, 2, new Array(
-			new Gun(3, false, "Frontier 73C", 41, "img/frontier.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)]),
-			new Gun(3, false, "Frontier 73C Silencer", 55, "img/frontier_sil.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)]),
-			new Gun(3, false, "Frontier 73C Marksman", 45, "img/frontier_mark.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)])
+			new Gun(3, false, "Frontier 73C", 41, "img/frontier.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)]),
+			new Gun(3, false, "Frontier 73C Silencer", 47, "img/frontier_sil.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)]),
+			new Gun(3, false, "Frontier 73C Marksman", 45, "img/frontier_mark.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)])
 		)
 	),
 	new GunFamily(1, 1, new Array(
@@ -136,9 +141,9 @@ var gunFamilies = new Array(
 		)
 	),
 	new GunFamily(1,3, new Array(
-			new Gun(3, false, "Infantry 73L", 78, "img/infantry.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)]),
-			new Gun(3, false, "Infantry 73L ", 88, "img/infantry_bay.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)]),
-			new Gun(3, false, "Infantry 73L Sniper", 90, "img/infantry_snip.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)])
+			new Gun(3, false, "Infantry 73L", 78, "img/infantry.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)]),
+			new Gun(3, false, "Infantry 73L ", 88, "img/infantry_bay.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)]),
+			new Gun(3, false, "Infantry 73L Sniper", 90, "img/infantry_snip.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)])
 		)
 	),
 	new GunFamily(1, 1, new Array(
@@ -146,9 +151,10 @@ var gunFamilies = new Array(
 		)
 	),
 	new GunFamily(1, 3, new Array(
-			new Gun(3, false, "Krag", 345, "img/krag.jpg", false, [new AmmoType("img/ammo/n.png",0), new AmmoType("img/ammo/l-i.png", 70), new AmmoType("img/ammo/l-f.png", 60)]),
-			new Gun(3, false, "Krag Bayonet", 355, "img/krag_bay.jpg", false, [new AmmoType("img/ammo/n.png",0), new AmmoType("img/ammo/l-i.png", 70), new AmmoType("img/ammo/l-f.png", 60)]),
-			new Gun(3, false, "Krag Sniper", 397, "img/krag_snip.jpg", false, [new AmmoType("img/ammo/n.png",0), new AmmoType("img/ammo/l-i.png", 70), new AmmoType("img/ammo/l-f.png", 60)])
+			new Gun(3, false, "Krag", 345, "img/krag.jpg", false, [new AmmoType("img/ammo/n.png",0), new AmmoType("img/ammo/sub.png",20), new AmmoType("img/ammo/l-i.png", 70), new AmmoType("img/ammo/l-f.png", 60)]),
+			new Gun(3, false, "Krag Bayonet", 355, "img/krag_bay.jpg", false, [new AmmoType("img/ammo/n.png",0), new AmmoType("img/ammo/sub.png",20), new AmmoType("img/ammo/l-i.png", 70), new AmmoType("img/ammo/l-f.png", 60)]),
+			new Gun(3, false, "Krag Sniper", 397, "img/krag_snip.jpg", false, [new AmmoType("img/ammo/n.png",0), new AmmoType("img/ammo/sub.png",20), new AmmoType("img/ammo/l-i.png", 70), new AmmoType("img/ammo/l-f.png", 60)]),
+			new Gun(3, false, "Krag Silencer", 396, "img/krag_snip.jpg", false, [new AmmoType("img/ammo/n.png",0), new AmmoType("img/ammo/sub.png",20), new AmmoType("img/ammo/l-i.png", 70), new AmmoType("img/ammo/l-f.png", 60)])
 		)
 	),
 	new GunFamily(1, 1, new Array(
@@ -189,7 +195,8 @@ var gunFamilies = new Array(
 		)
 	),
 	new GunFamily(1, 3, new Array(
-			new Gun(3, false, "Maynard Sniper", 139, "img/maynard.jpg", true, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/m-d.png", 50), new AmmoType("img/ammo/m-h.png", 60)])
+			new Gun(3, false, "Maynard Sniper", 139, "img/maynard.jpg", true, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/sub.png",10), new AmmoType("img/ammo/m-d.png", 50), new AmmoType("img/ammo/m-h.png", 60)]),
+			new Gun(3, false, "Maynard Sniper Silencer", 159, "img/maynard_sil.jpg", true, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/sub.png",10), new AmmoType("img/ammo/m-d.png", 50), new AmmoType("img/ammo/m-h.png", 60)])
 		)
 	),
 	new GunFamily(1, 3, new Array(
@@ -206,12 +213,12 @@ var gunFamilies = new Array(
 		)
 	),
 	new GunFamily(1, 1, new Array(
-			new Gun(1, false, "Nagant M1895", 24, "img/nagant.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-p.png", 50), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-d.png", 50)]),
-			new Gun(2, true, "Dual Nagant M1895", 48, "img/nagant_dual.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-p.png", 50), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-d.png", 50)]),
-			new Gun(2, false, "Nagant M1895 Precision", 29, "img/nagant_prec.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-p.png", 50), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-d.png", 50)]),
-			new Gun(1, false, "Nagant M1895 Silencer", 93, "img/nagant_sil.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-p.png", 50), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-d.png", 50)]),
-			new Gun(2, true, "Dual Nagant M1895 Silencer", 186, "img/nagant_sil_dual.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-p.png", 50), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-d.png", 50)]),
-			new Gun(2, false, "Nagant M1895 Deadeye", 30, "img/nagant_prec_dead.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-p.png", 50), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-d.png", 50)])
+			new Gun(1, false, "Nagant M1895", 24, "img/nagant.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-p.png", 50), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-d.png", 50)]),
+			new Gun(2, true, "Dual Nagant M1895", 48, "img/nagant_dual.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-p.png", 50), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-d.png", 50)]),
+			new Gun(2, false, "Nagant M1895 Precision", 29, "img/nagant_prec.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-p.png", 50), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-d.png", 50)]),
+			new Gun(1, false, "Nagant M1895 Silencer", 27, "img/nagant_sil.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-p.png", 50), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-d.png", 50)]),
+			new Gun(2, true, "Dual Nagant M1895 Silencer", 54, "img/nagant_sil_dual.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-p.png", 50), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-d.png", 50)]),
+			new Gun(2, false, "Nagant M1895 Deadeye", 30, "img/nagant_prec_dead.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-p.png", 50), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-d.png", 50)])
 		)
 	),
 	new GunFamily(1, 1, new Array(
@@ -226,12 +233,12 @@ var gunFamilies = new Array(
 		)
 	),
 	new GunFamily(1, 1, new Array(
-			new Gun(1, false, "Officer", 96, "img/officer.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-p.png", 50), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-d.png", 50)]),
-			new Gun(2, true, "Dual Officer", 192, "img/officer_dual.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-p.png", 50), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-d.png", 50)]),
-			new Gun(1, false, "Officer Brawler", 106, "img/officer_braw.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-p.png", 50), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-d.png", 50)]),
-			new Gun(2, true, "Dual Officer Brawler", 212, "img/officer_braw_dual.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-p.png", 50), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-d.png", 50)]),
-			new Gun(3, false, "Officer Carbine", 183, "img/officer_carb.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-p.png", 50), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-d.png", 50)]),
-			new Gun(3, false, "Officer Carbine Deadeye", 192, "img/officer_carb_dead.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-p.png", 50), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-d.png", 50)])
+			new Gun(1, false, "Officer", 96, "img/officer.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-p.png", 50), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-d.png", 50)]),
+			new Gun(2, true, "Dual Officer", 192, "img/officer_dual.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-p.png", 50), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-d.png", 50)]),
+			new Gun(1, false, "Officer Brawler", 106, "img/officer_braw.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-p.png", 50), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-d.png", 50)]),
+			new Gun(2, true, "Dual Officer Brawler", 212, "img/officer_braw_dual.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-p.png", 50), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-d.png", 50)]),
+			new Gun(3, false, "Officer Carbine", 183, "img/officer_carb.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-p.png", 50), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-d.png", 50)]),
+			new Gun(3, false, "Officer Carbine Deadeye", 192, "img/officer_carb_dead.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-p.png", 50), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-d.png", 50)])
 		)
 	),
 	new GunFamily(1, 1, new Array(
@@ -248,10 +255,10 @@ var gunFamilies = new Array(
 		)
 	),
 	new GunFamily(1, 3, new Array(
-			new Gun(3, false, "Ranger 73", 75, "img/ranger.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)]),
-			new Gun(3, false, "Ranger 73 Aperture", 79, "img/ranger_aper.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)]),
-			new Gun(3, false, "Ranger 73 Talon", 85, "img/ranger_talon.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)]),
-			new Gun(3, false, "Ranger 73 Swift", 128, "img/ranger_swif.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)])
+			new Gun(3, false, "Ranger 73", 75, "img/ranger.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)]),
+			new Gun(3, false, "Ranger 73 Aperture", 79, "img/ranger_aper.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)]),
+			new Gun(3, false, "Ranger 73 Talon", 85, "img/ranger_talon.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)]),
+			new Gun(3, false, "Ranger 73 Swift", 128, "img/ranger_swif.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)])
 		)
 	),
 	new GunFamily(1, 2, new Array(
@@ -287,11 +294,13 @@ var gunFamilies = new Array(
 		)
 	),
 	new GunFamily(1, 1, new Array(
-			new Gun(3, false, "Sparks", 130, "img/sparks.jpg", true, [new AmmoType("img/ammo/l.png",0), new AmmoType("img/ammo/l-i.png", 35), new AmmoType("img/ammo/l-f.png", 30), new AmmoType("img/ammo/l-p.png", 30)]),
-			new Gun(1, false, "Sparks Pistol", 155, "img/sparks_pis.jpg", true, [new AmmoType("img/ammo/l.png",0), new AmmoType("img/ammo/l-i.png", 35), new AmmoType("img/ammo/l-f.png", 30), new AmmoType("img/ammo/l-p.png", 30)]),
-			new Gun(2, true, "Dual Sparks Pistol", 310, "img/sparks_pis_dual.jpg", true, [new AmmoType("img/ammo/l.png",0), new AmmoType("img/ammo/l-i.png", 35), new AmmoType("img/ammo/l-f.png", 30), new AmmoType("img/ammo/l-p.png", 30)]),
-			new Gun(3, false, "Sparks Silencer", 150, "img/sparks_sil.jpg", true, [new AmmoType("img/ammo/l.png",0), new AmmoType("img/ammo/l-i.png", 35), new AmmoType("img/ammo/l-f.png", 30), new AmmoType("img/ammo/l-p.png", 30)]),
-			new Gun(3, false, "Sparks Sniper", 150, "img/sparks_snip.jpg", true, [new AmmoType("img/ammo/l.png",0), new AmmoType("img/ammo/l-i.png", 35), new AmmoType("img/ammo/l-f.png", 30), new AmmoType("img/ammo/l-p.png", 30)])
+			new Gun(3, false, "Sparks", 130, "img/sparks.jpg", true, [new AmmoType("img/ammo/l.png",0), new AmmoType("img/ammo/sub.png",20), new AmmoType("img/ammo/l-i.png", 35), new AmmoType("img/ammo/l-f.png", 30), new AmmoType("img/ammo/l-p.png", 30)]),
+			new Gun(1, false, "Sparks Pistol", 155, "img/sparks_pis.jpg", true, [new AmmoType("img/ammo/l.png",0), new AmmoType("img/ammo/sub.png",20), new AmmoType("img/ammo/l-i.png", 35), new AmmoType("img/ammo/l-f.png", 30), new AmmoType("img/ammo/l-p.png", 30)]),
+			new Gun(2, true, "Dual Sparks Pistol", 310, "img/sparks_pis_dual.jpg", true, [new AmmoType("img/ammo/l.png",0), new AmmoType("img/ammo/sub.png",20), new AmmoType("img/ammo/l-i.png", 35), new AmmoType("img/ammo/l-f.png", 30), new AmmoType("img/ammo/l-p.png", 30)]),
+			new Gun(3, false, "Sparks Silencer", 149, "img/sparks_sil.jpg", true, [new AmmoType("img/ammo/l.png",0), new AmmoType("img/ammo/sub.png",20), new AmmoType("img/ammo/l-i.png", 35), new AmmoType("img/ammo/l-f.png", 30), new AmmoType("img/ammo/l-p.png", 30)]),
+			new Gun(3, false, "Sparks Sniper", 150, "img/sparks_snip.jpg", true, [new AmmoType("img/ammo/l.png",0), new AmmoType("img/ammo/sub.png",20), new AmmoType("img/ammo/l-i.png", 35), new AmmoType("img/ammo/l-f.png", 30), new AmmoType("img/ammo/l-p.png", 30)]),
+			new Gun(1, false, "Sparks Pistol Silencer", 178, "img/sparks_pis_sil.jpg", true, [new AmmoType("img/ammo/l.png",0), new AmmoType("img/ammo/sub.png",20), new AmmoType("img/ammo/l-i.png", 35), new AmmoType("img/ammo/l-f.png", 30), new AmmoType("img/ammo/l-p.png", 30)]),
+			new Gun(2, true, "Dual Sparks Pistol Silencer", 356, "img/sparks_pis_sil_dual.jpg", true, [new AmmoType("img/ammo/l.png",0), new AmmoType("img/ammo/sub.png",20), new AmmoType("img/ammo/l-i.png", 35), new AmmoType("img/ammo/l-f.png", 30), new AmmoType("img/ammo/l-p.png", 30)])
 		)
 	),
 	new GunFamily(1, 2, new Array(
@@ -322,18 +331,18 @@ var gunFamilies = new Array(
 		)
 	),
 	new GunFamily(1, 2, new Array(
-			new Gun(2, false, "Vandal", 35, "img/vandal.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)]),
-			new Gun(2, false, "Vandal Striker", 45, "img/vandal_striker.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)]),
-			new Gun(2, false, "Vandal Bullseye", 37, "img/vandal_dead.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)])
+			new Gun(2, false, "Vandal", 35, "img/vandal.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)]),
+			new Gun(2, false, "Vandal Striker", 45, "img/vandal_striker.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)]),
+			new Gun(2, false, "Vandal Bullseye", 37, "img/vandal_dead.jpg", false, [new AmmoType("img/ammo/c.png",0), new AmmoType("img/ammo/sub.png",5), new AmmoType("img/ammo/c-i.png", 40), new AmmoType("img/ammo/c-h.png", 60), new AmmoType("img/ammo/c-f.png", 50), new AmmoType("img/ammo/c-p.png", 50)])
 		)
 	),
 	new GunFamily(1, 3, new Array(
-			new Gun(3, false, "Vetterli 71", 105, "img/vetterli.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/m-i.png", 40), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-h.png", 60)]),
-			new Gun(3, false, "Vetterli 71 Deadeye", 155, "img/vetterli_dead.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/m-i.png", 40), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-h.png", 60)]),
-			new Gun(3, false, "Vetterli 71 Marksman", 190, "img/vetterli_mark.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/m-i.png", 40), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-h.png", 60)]),
-			new Gun(3, false, "Vetterli 71 Bayonet", 130, "img/vetterli_bay.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/m-i.png", 40), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-h.png", 60)]),
-			new Gun(3, false, "Vetterli 71 Silencer", 150, "img/vetterli_sil.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/m-i.png", 40), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-h.png", 60)]),
-			new Gun(3, false, "Vetterli 71 Cyclone", 535, "img/vetterli_cyc.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/m-i.png", 40), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-h.png", 60)])
+			new Gun(3, false, "Vetterli 71", 105, "img/vetterli.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/sub.png",10), new AmmoType("img/ammo/m-i.png", 40), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-h.png", 60)]),
+			new Gun(3, false, "Vetterli 71 Deadeye", 155, "img/vetterli_dead.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/sub.png",10), new AmmoType("img/ammo/m-i.png", 40), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-h.png", 60)]),
+			new Gun(3, false, "Vetterli 71 Marksman", 190, "img/vetterli_mark.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/sub.png",10), new AmmoType("img/ammo/m-i.png", 40), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-h.png", 60)]),
+			new Gun(3, false, "Vetterli 71 Bayonet", 130, "img/vetterli_bay.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/sub.png",10), new AmmoType("img/ammo/m-i.png", 40), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-h.png", 60)]),
+			new Gun(3, false, "Vetterli 71 Silencer", 120, "img/vetterli_sil.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/sub.png",10), new AmmoType("img/ammo/m-i.png", 40), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-h.png", 60)]),
+			new Gun(3, false, "Vetterli 71 Cyclone", 535, "img/vetterli_cyc.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/sub.png",10), new AmmoType("img/ammo/m-i.png", 40), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-h.png", 60)])
 		)
 	)	
 );
@@ -364,7 +373,7 @@ var toolList = new Array(
 );
 
 var consumableList = new Array(
-	new Consumable(1, "Dark Dynamite Satchel", 200, "img/dynamite_dark.jpg"),
+	new Consumable(1, "Dark Dynamite Satchel", 100, "img/dynamite_dark.jpg"),
 	new Consumable(1, "Ammo Box", 65, "img/ammo_box.jpg"),
 	new Consumable(1, "Fire Bomb", 30, "img/firebomb.jpg"),
 	new Consumable(1, "Medical Pack", 35, "img/medicalpack.jpg"),
@@ -374,6 +383,7 @@ var consumableList = new Array(
 	new Consumable(1, "Weak Stamina Shot", 60, "img/shot_sta_weak.jpg"),
 	new Consumable(1, "Weak Regeneration Shot", 65, "img/shot_reg_weak.jpg"),
 	new Consumable(1, "Weak Antidote Shot", 30, "img/shot_ant_weak.jpg"),
+	new Consumable(1, "Recovery Shot", 140, "img/shot_rec.jpg"),
 	new Consumable(7, "Vitality Shot", 85, "img/shot_vit.jpg"),
 	new Consumable(10, "Stamina Shot", 100, "img/shot_sta.jpg"),
 	new Consumable(13, "Regeneration Shot", 110, "img/shot_reg.jpg"),
