@@ -41,8 +41,8 @@ var remainingSize = 0;
 //Data intialization
 var gunFamilies = new Array( 
 	new GunFamily(1, 3, new Array(
-			new Gun(3, false, "1865 Carbine", 70, "img/1865carbine.jpg", true, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/m-f.png", 50)]),
-			new Gun(3, false, "1865 Carbine Aperture", 74, "img/1865carbine_ap.jpg", true, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/m-f.png", 50)])
+			new Gun(3, false, "1865 Carbine", 70, "img/1865carbine.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/m-f.png", 50)]),
+			new Gun(3, false, "1865 Carbine Aperture", 74, "img/1865carbine_ap.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/m-f.png", 50)])
 		)
 	),
 	new GunFamily(1, 2, new Array(
