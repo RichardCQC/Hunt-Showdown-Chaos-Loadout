@@ -9,7 +9,7 @@
   <meta name="description" content="A random loadout generator for the game Hunt : Showdown.">
   <meta name="author" content="RichardCQC">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="css/style.css?v=6">
+  <link rel="stylesheet" href="css/waldmann.css">
   <script src="js/script.js?v=23"></script>
   <script>
     window.onload = function() {
@@ -24,21 +24,23 @@
 
 <body>
   <div class="header">
-    <img src="img/banner.jpg" alt="Hunt Showdown Loadout Generator"/>
+    <img src="img/bannerwald.jpg" alt="Hunt Showdown Loadout Generator"/>
   </div>
   <div class="main-content">
     <div class="changelog-menu">
       <div>
         <a id="nav-toggle" class="noselect" onclick="toggleChangelog()">&#9776;</a>
         <div id="homebutton" class = "option">
-          <a class = "linkbutton" href="home.html">Contact Me</a>
+          <span>
+            <a class = "linkbutton" href="home.html">Contact developer</a>
+          </span>
         </div>
       </div>
       <span id="changelog">
         <div class="changelog-title">UI Tips</div>
         <div>
           <br>
-          Clicking a slot will remove the green border around it.<br>
+          Clicking a slot will remove the red border around it.<br>
           The randomizer will no longer generate that slot.<br><br>
           Hovering over a slot will reveal two buttons :
           <ul>
@@ -56,16 +58,14 @@
         </div>
         <div class="changelog-title">Changelog</div>
         <ul>
-          <li>2025-02-17 - Added weapon only feature and fixed some bugs.</li>
-          <li>2025-01-15 - Fixed small error for 1865 carbine.</li>
-          <li>2024-12-21 - Updated for Murder Circus Event</li>
-          <li>2024-10-16 - Updated for Harvest of Ghost Event</li>
-          <li>2024-10-07 - Updated the bloodline level of bear traps.</li>
-          <li>2024-09-25 - Fixed problem with custom ammo on lemat/haymaker.</li>
-          <li>2024-09-15 - Fixed bomblance being able to carry two type of bolts</li>
-          <li>2024-08-31 - Fixed missing bear traps</li>
-          <li>2024-08-21 - Updated for Hunt Showdown 1896</li>
+          <li>2025-02-17 : The Waldmann Page Created.</li>
         </ul>
+        <div class="changelog-title">The Waldmann</div>
+        <br>
+        This page has been made for the waldmann on twitch, which <br>
+        you can find here:
+        <a class = "linkbutton" href="https://www.twitch.tv/the_waldmann">The_Waldmann Twitch</a>
+        <br><br>
       </span>
     </div>
     <audio id="tick" autoplay="autoplay">
@@ -166,8 +166,8 @@
             <div>
               <input type="checkbox" id="weapon1" checked="true" />
               <label class="noselect" for="weapon1"><img id="w1" src="img/emptyLarge.jpg"/></label>
-              <img class="hover1" src="img/reroll.jpg" onclick="reroll('weapon1')" />
-              <img class="hover2" src="img/previous.jpg" onclick="previous('weapon1')" />
+              <img class="hover1" src="img/rerollred.jpg" onclick="reroll('weapon1')" />
+              <img class="hover2" src="img/previousred.jpg" onclick="previous('weapon1')" />
               <img class="overlay1" id="w1a1" src = "img/ammo/none.png"/>
               <img class="overlay2" id="w1a2" src = "img/ammo/none.png"/>
             </div>
@@ -176,8 +176,8 @@
             <div>
               <input type="checkbox" id="weapon2" checked="true" />
               <label class="noselect" for="weapon2"><img id="w2" src="img/emptySmall.jpg"/></label>
-              <img class="hover1" src="img/reroll.jpg" onclick="reroll('weapon2')" />
-              <img class="hover2" src="img/previous.jpg" onclick="previous('weapon2')" />
+              <img class="hover1" src="img/rerollred.jpg" onclick="reroll('weapon2')" />
+              <img class="hover2" src="img/previousred.jpg" onclick="previous('weapon2')" />
               <img class="overlay1" id="w2a1" src = "img/ammo/none.png"/>
               <img class="overlay2" id="w2a2" src = "img/ammo/none.png"/>
             </div>
@@ -187,22 +187,22 @@
             <div class="tnc">
               <input type="checkbox" class="tool" id="tool1" checked />
               <label class="noselect" for="tool1"><img id="t1" src="img/emptySmall.jpg"/></label> 
-              <img class="hover1" src="img/reroll.jpg" onclick="reroll('tool1')" />
+              <img class="hover1" src="img/rerollred.jpg" onclick="reroll('tool1')" />
             </div>
             <div class="tnc">
               <input type="checkbox" class="tool" id="tool2" checked />
               <label class="noselect" for="tool2"><img id="t2" src="img/emptySmall.jpg"/></label> 
-              <img class="hover1" src="img/reroll.jpg" onclick="reroll('tool2')" />
+              <img class="hover1" src="img/rerollred.jpg" onclick="reroll('tool2')" />
             </div>
             <div class="tnc">
               <input type="checkbox" class="tool" id="tool3" checked />
               <label class="noselect" for="tool3"><img id="t3" src="img/emptySmall.jpg"/></label>
-              <img class="hover1" src="img/reroll.jpg" onclick="reroll('tool3')" />
+              <img class="hover1" src="img/rerollred.jpg" onclick="reroll('tool3')" />
             </div>
             <div class="tnc">
               <input type="checkbox" class="tool" id="tool4" checked />
               <label class="noselect" for="tool4"><img id="t4" src="img/emptySmall.jpg"/></label> 
-              <img class="hover1" src="img/reroll.jpg" onclick="reroll('tool4')" />
+              <img class="hover1" src="img/rerollred.jpg" onclick="reroll('tool4')" />
             </div>
           </li>
           <label class="tnc">Consumables</label>
@@ -210,22 +210,22 @@
             <div class="tnc">
               <input type="checkbox" id="consumable1" checked />
               <label class="noselect" for="consumable1"><img id="c1" src="img/emptySmall.jpg"/></label>
-              <img class="hover1" src="img/reroll.jpg" onclick="reroll('consumable1')" />
+              <img class="hover1" src="img/rerollred.jpg" onclick="reroll('consumable1')" />
             </div>
             <div class="tnc">
               <input type="checkbox" id="consumable2" checked />
               <label class="noselect" for="consumable2"><img id="c2" src="img/emptySmall.jpg"/></label> 
-              <img class="hover1" src="img/reroll.jpg" onclick="reroll('consumable2')" />
+              <img class="hover1" src="img/rerollred.jpg" onclick="reroll('consumable2')" />
             </div>
             <div class="tnc">
               <input type="checkbox" id="consumable3" checked />
               <label class="noselect" for="consumable3"><img id="c3" src="img/emptySmall.jpg"/></label> 
-              <img class="hover1" src="img/reroll.jpg" onclick="reroll('consumable3')" />
+              <img class="hover1" src="img/rerollred.jpg" onclick="reroll('consumable3')" />
             </div>
             <div class="tnc">
               <input type="checkbox" id="consumable4" checked />
               <label class="noselect" for="consumable4"><img id="c4" src="img/emptySmall.jpg"/></label> 
-              <img class="hover1" src="img/reroll.jpg" onclick="reroll('consumable4')" />
+              <img class="hover1" src="img/rerollred.jpg" onclick="reroll('consumable4')" />
             </div>
           </li>
           <div id="under">
@@ -244,6 +244,7 @@
   <img src="img/auto5.jpg" width="1" height="1"/>
   <img src="img/axe.jpg" width="1" height="1"/>
   <img src="img/banner.jpg" width="1" height="1"/>
+  <img src="img/bannerwald.jpg" width="1" height="1"/>
   <img src="img/bannerhome.jpg" width="1" height="1"/>
   <img src="img/bannerhometext.png" width="1" height="1"/>
   <img src="img/bat.jpg" width="1" height="1"/>
@@ -385,11 +386,13 @@
   <img src="img/pax_true_dual.jpg" width="1" height="1"/>
   <img src="img/poisonbomb.jpg" width="1" height="1"/>
   <img src="img/previous.jpg" width="1" height="1"/>
+  <img src="img/previousred.jpg" width="1" height="1"/>
   <img src="img/ranger.jpg" width="1" height="1"/>
   <img src="img/ranger_aper.jpg" width="1" height="1"/>
   <img src="img/ranger_swif.jpg" width="1" height="1"/>
   <img src="img/ranger_talon.jpg" width="1" height="1"/>
   <img src="img/reroll.jpg" width="1" height="1"/>
+  <img src="img/rerollred.jpg" width="1" height="1"/>
   <img src="img/rival.jpg" width="1" height="1"/>
   <img src="img/rival_mace.jpg" width="1" height="1"/>
   <img src="img/rival_sho.jpg" width="1" height="1"/>

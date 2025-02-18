@@ -11,7 +11,10 @@ var customAmmoPercentage = 50;
 var sound = true;
 var animation = true;
 var forceMedkit = false;
+var onlyShowWeapons = true;
 var loadoutPriceLimit;
+
+
 
 //Variables for result
 var weapon1 = null;
@@ -51,6 +54,7 @@ var gunFamilies = new Array(
 		)
 	),
 	new GunFamily(1, 1, new Array(
+			new Gun(1, false, "Baseball Bat", 40, "img/bat.jpg", false, [ammoTypeNone]),
 			new Gun(1, false, "Baseball Bat", 40, "img/bat.jpg", false, [ammoTypeNone])
 		)
 	),
@@ -77,6 +81,7 @@ var gunFamilies = new Array(
 		)
 	),
 	new GunFamily(1, 1, new Array(
+			new Gun(1, false, "Cavalry Saber", 50, "img/saber.jpg", false, [ammoTypeNone]),
 			new Gun(1, false, "Cavalry Saber", 50, "img/saber.jpg", false, [ammoTypeNone])
 		)
 	),
@@ -90,6 +95,7 @@ var gunFamilies = new Array(
 		)
 	),
 	new GunFamily(1, 1, new Array(
+			new Gun(1, false, "Combat Axe", 40, "img/axe.jpg", false, [ammoTypeNone]),
 			new Gun(1, false, "Combat Axe", 40, "img/axe.jpg", false, [ammoTypeNone])
 		)
 	),
@@ -130,13 +136,16 @@ var gunFamilies = new Array(
 	),
 	new GunFamily(1, 1, new Array(
 			new Gun(1, false, "Hand Crossbow", 30, "img/crossbow_hand.jpg", true, [new AmmoType("img/ammo/b.png", 0), new AmmoType("img/ammo/b-p.png", 25), new AmmoType("img/ammo/b-c.png", 10), new AmmoType("img/ammo/b-ch.png", 10), new AmmoType("img/ammo/bomb-d.png", 40), new AmmoType("img/ammo/b-r.png", 40)]),
+			new Gun(1, false, "Hand Crossbow", 30, "img/crossbow_hand.jpg", true, [new AmmoType("img/ammo/b.png", 0), new AmmoType("img/ammo/b-p.png", 25), new AmmoType("img/ammo/b-c.png", 10), new AmmoType("img/ammo/b-ch.png", 10), new AmmoType("img/ammo/bomb-d.png", 40), new AmmoType("img/ammo/b-r.png", 40)])
 		)
 	),
 	new GunFamily(1,2,new Array(
 			new Gun(2, false, "Haymaker", 370, "img/haymaker.jpg", true, [new AmmoType("img/ammo/l.png",0), new AmmoType("img/ammo/l-p.png", 60), new AmmoType("img/ammo/l-f.png", 60), new AmmoType("img/ammo/s.png",0), new AmmoType("img/ammo/s-s.png", 5), new AmmoType("img/ammo/s-d.png", 10), new AmmoType("img/ammo/s-sl.png", 65)]),
+			new Gun(2, false, "Haymaker", 370, "img/haymaker.jpg", true, [new AmmoType("img/ammo/l.png",0), new AmmoType("img/ammo/l-p.png", 60), new AmmoType("img/ammo/l-f.png", 60), new AmmoType("img/ammo/s.png",0), new AmmoType("img/ammo/s-s.png", 5), new AmmoType("img/ammo/s-d.png", 10), new AmmoType("img/ammo/s-sl.png", 65)])
 		)	
 	),
 	new GunFamily(1, 2, new Array(
+			new Gun(2, false, "Hunting Bow", 57, "img/bow.jpg", true, [new AmmoType("img/ammo/b.png",0), new AmmoType("img/ammo/a-p.png",25), new AmmoType("img/ammo/a-f.png", 70), new AmmoType("img/ammo/a-c.png", 30)]),
 			new Gun(2, false, "Hunting Bow", 57, "img/bow.jpg", true, [new AmmoType("img/ammo/b.png",0), new AmmoType("img/ammo/a-p.png",25), new AmmoType("img/ammo/a-f.png", 70), new AmmoType("img/ammo/a-c.png", 30)])
 		)
 	),
@@ -147,6 +156,7 @@ var gunFamilies = new Array(
 		)
 	),
 	new GunFamily(1, 1, new Array(
+			new Gun(1, false, "Katana", 115, "img/katana.jpg", false, [ammoTypeNone]),
 			new Gun(1, false, "Katana", 115, "img/katana.jpg", false, [ammoTypeNone])
 		)
 	),
@@ -172,6 +182,7 @@ var gunFamilies = new Array(
 		)
 	),
 	new GunFamily(1, 1, new Array(
+			new Gun(1, false, "Machete", 30, "img/machete.jpg", false, [ammoTypeNone]),
 			new Gun(1, false, "Machete", 30, "img/machete.jpg", false, [ammoTypeNone])
 		)
 	),
@@ -229,6 +240,7 @@ var gunFamilies = new Array(
 		)
 	),
 	new GunFamily(1, 3, new Array(
+			new Gun(3, false, "Nitro Express", 1015, "img/nitro.jpg", false, [new AmmoType("img/ammo/n.png",0), new AmmoType("img/ammo/n-d.png", 225), new AmmoType("img/ammo/n-e.png", 200)]),
 			new Gun(3, false, "Nitro Express", 1015, "img/nitro.jpg", false, [new AmmoType("img/ammo/n.png",0), new AmmoType("img/ammo/n-d.png", 225), new AmmoType("img/ammo/n-e.png", 200)])
 		)
 	),
@@ -251,6 +263,7 @@ var gunFamilies = new Array(
 		)
 	),
 	new GunFamily(1, 1, new Array(
+			new Gun(1, false, "Railroad Hammer", 15, "img/hammer.jpg", false, [ammoTypeNone]),
 			new Gun(1, false, "Railroad Hammer", 15, "img/hammer.jpg", false, [ammoTypeNone])
 		)
 	),
@@ -428,6 +441,8 @@ function updateSlots() {
 			if (store[key][(num-1)] != null) {
 				e.src = store[key][(num-1)].image;
 				e.alt = store[key][(num-1)].name;
+			} else  {
+				e.src = "img/emptySmall.jpg";
 			}
 		})
 	}});
@@ -480,6 +495,7 @@ function disableFormElements(){
 	document.getElementById("dup").disabled = true;
 	document.getElementById("med").disabled = true;
 	document.getElementById("quartermaster").disabled = true;
+	document.getElementById("onlyshowweapons").disabled = true;
 	document.getElementById("customammo").disabled = true;
 	document.getElementById("rank").disabled = true;
 	document.getElementById("sound").disabled = true;
@@ -492,6 +508,7 @@ function enableFormElements(){
 	document.getElementById("dup").disabled = false;
 	document.getElementById("med").disabled = false;
 	document.getElementById("quartermaster").disabled = false;
+	document.getElementById("onlyshowweapons").disabled = false;
 	document.getElementById("customammo").disabled = false;
 	document.getElementById("rank").disabled = false;
 	document.getElementById("sound").disabled = false;
@@ -516,7 +533,9 @@ function generate() {
 				updateRemainingSize();
 				
 			}
-			randomizeSlots();
+			if (!onlyShowWeapons){
+				randomizeSlots();
+			}
 			generationCount ++;
 		} while(calculatePrice() > loadoutPriceLimit && generationCount < 10000);
 
@@ -628,6 +647,7 @@ function setParameterValues() {
 	animation = document.getElementById("anim").checked;
 	rank = document.getElementById("rank").value;
 	loadoutPriceLimit = document.getElementById("priceLimit").value;
+	onlyShowWeapons = document.getElementById("onlyshowweapons").checked;
 }
 
 function generateWeapon() {
@@ -940,59 +960,61 @@ function previous(toRoll){
 }
 
 function reroll(toRoll){
-	setParameterValues();
-	if (toRoll == "weapon1") {
-		if (generateWeapon1) {	
-			setMaxSize();
-			weapon1 = null;
-			remainingSize = maxSize;
-			if (weapon2 != null) {
-				remainingSize = maxSize - weapon2.size;
+	if (document.getElementById(toRoll).checked){
+		setParameterValues();
+		if (toRoll == "weapon1") {
+			if (generateWeapon1) {	
+				setMaxSize();
+				weapon1 = null;
+				remainingSize = maxSize;
+				if (weapon2 != null) {
+					remainingSize = maxSize - weapon2.size;
+				}
+				weapon1 = generateWeapon(); 
+				document.getElementById("w1").src = weapon1.image;
+				document.getElementById("w1").alt = weapon1.name;
+				document.getElementById("w1a1").src = weapon1.ammo1.ammo;
+				document.getElementById("w1a2").src = weapon1.ammo2.ammo;
+				
 			}
-			weapon1 = generateWeapon(); 
-			document.getElementById("w1").src = weapon1.image;
-			document.getElementById("w1").alt = weapon1.name;
-			document.getElementById("w1a1").src = weapon1.ammo1.ammo;
-			document.getElementById("w1a2").src = weapon1.ammo2.ammo;
-			
 		}
-	}
-	if (toRoll == "weapon2") {
-		if (generateWeapon2) {	
-			setMaxSize();
-			weapon2 = null;
-			remainingSize = maxSize;
-			if (weapon1 != null) {
-				remainingSize = maxSize - weapon1.size;
+		if (toRoll == "weapon2") {
+			if (generateWeapon2) {	
+				setMaxSize();
+				weapon2 = null;
+				remainingSize = maxSize;
+				if (weapon1 != null) {
+					remainingSize = maxSize - weapon1.size;
+				}
+				weapon2 = generateWeapon(); 
+				document.getElementById("w2").src = weapon2.image;
+				document.getElementById("w2").alt = weapon2.name;
+				document.getElementById("w2a1").src = weapon2.ammo1.ammo;
+				document.getElementById("w2a2").src = weapon2.ammo2.ammo;
 			}
-			weapon2 = generateWeapon(); 
-			document.getElementById("w2").src = weapon2.image;
-			document.getElementById("w2").alt = weapon2.name;
-			document.getElementById("w2a1").src = weapon2.ammo1.ammo;
-			document.getElementById("w2a2").src = weapon2.ammo2.ammo;
 		}
-	}
 
-	if (toRoll.substring(0, 4) == "tool") {
-		var tnum = parseInt(toRoll.substring(4))-1;
-		var prev = store.tools[tnum]
-		if(prev == medkit && forceMedkit){
-			return;
+		if (toRoll.substring(0, 4) == "tool") {
+			var tnum = parseInt(toRoll.substring(4))-1;
+			var prev = store.tools[tnum]
+			if(prev == medkit && forceMedkit){
+				return;
+			}
+			while(store.tools[tnum] == prev){
+				store.tools[tnum] = null;
+				store.tools[tnum] = generateTool();
+			}
 		}
-		while(store.tools[tnum] == prev){
-			store.tools[tnum] = null;
-			store.tools[tnum] = generateTool();
+
+		if (toRoll.substring(0, 10) == "consumable") {
+			var cnum = parseInt(toRoll.substring(10))-1;
+			store.consumables[cnum] = null;
+			store.consumables[cnum] = generateConsumable();
 		}
-	}
 
-	if (toRoll.substring(0, 10) == "consumable") {
-		var cnum = parseInt(toRoll.substring(10))-1;
-		store.consumables[cnum] = null;
-		store.consumables[cnum] = generateConsumable();
+		updateSlots();
+		updateLoadoutPrice();
 	}
-
-	updateSlots();
-	updateLoadoutPrice();
 }
 
 function sleep(ms) {
@@ -1020,6 +1042,26 @@ function toggleChangelog(){
 		homebutton.style.display = "inline-block";
 		container.classList.add("menu-open");
 	}
+}
+
+function toggleToolsAndConsumables(){
+	var elements = document.getElementsByClassName("tnc");
+	if (document.getElementById("onlyshowweapons").checked){
+		for (let i = 0; i < elements.length; i++) {
+			elements.item(i).style.display = "none";
+			store = {
+				tools: [null, null, null, null],
+				consumables: [null, null, null, null]
+			};
+			updateSlots();
+			updateLoadoutPrice();
+		}
+	} else {
+		for (let i = 0; i < elements.length; i++) {
+			elements.item(i).style.display = "inline-block";
+		}
+	}
+	
 }
 
 function toggleShowOptions(){
