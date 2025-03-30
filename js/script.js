@@ -5,6 +5,7 @@ var generateWeapon1 = true;
 var generateWeapon2 = true;
 var allowDualWield = true;
 var allowQuatermaster = false;
+var allowGunrunner = false;
 var allowDuplicateWeapons = true;
 var allowCustomAmmo = true;
 var customAmmoPercentage = 50;
@@ -498,6 +499,7 @@ function disableFormElements(){
 	document.getElementById("dup").disabled = true;
 	document.getElementById("med").disabled = true;
 	document.getElementById("quartermaster").disabled = true;
+	document.getElementById("gunrunner").disabled = true;
 	document.getElementById("onlyshowweapons").disabled = true;
 	document.getElementById("customammo").disabled = true;
 	document.getElementById("rank").disabled = true;
@@ -511,6 +513,7 @@ function enableFormElements(){
 	document.getElementById("dup").disabled = false;
 	document.getElementById("med").disabled = false;
 	document.getElementById("quartermaster").disabled = false;
+	document.getElementById("gunrunner").disabled = false;
 	document.getElementById("onlyshowweapons").disabled = false;
 	document.getElementById("customammo").disabled = false;
 	document.getElementById("rank").disabled = false;
@@ -626,6 +629,10 @@ function setMaxSize() {
 	} else {
 		maxSize = 4;
 	}
+
+	if (allowGunrunner) {
+		maxSize = 6
+	}
 }
 
 function setParameterValues() {
@@ -644,6 +651,7 @@ function setParameterValues() {
 	allowDualWield = document.getElementById("dual").checked;
 	forceMedkit = document.getElementById("med").checked;
 	allowQuatermaster = document.getElementById("quartermaster").checked;
+	allowGunrunner = document.getElementById("gunrunner").checked;
 	allowDuplicateWeapons = document.getElementById("dup").checked;
 	allowCustomAmmo = document.getElementById("customammo").checked;
 	sound = document.getElementById("sound").checked;
