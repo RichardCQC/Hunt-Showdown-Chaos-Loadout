@@ -12,7 +12,8 @@ var customAmmoPercentage = 50;
 var sound = true;
 var animation = true;
 var forceMedkit = false;
-var onlyShowWeapons = true;
+var onlyShowWeapons = false;
+var onlyBaseVariants = false;
 var loadoutPriceLimit;
 
 
@@ -501,6 +502,7 @@ function disableFormElements(){
 	document.getElementById("quartermaster").disabled = true;
 	document.getElementById("gunrunner").disabled = true;
 	document.getElementById("onlyshowweapons").disabled = true;
+	document.getElementById("onlybase").disabled = true;
 	document.getElementById("customammo").disabled = true;
 	document.getElementById("rank").disabled = true;
 	document.getElementById("sound").disabled = true;
@@ -515,6 +517,7 @@ function enableFormElements(){
 	document.getElementById("quartermaster").disabled = false;
 	document.getElementById("gunrunner").disabled = false;
 	document.getElementById("onlyshowweapons").disabled = false;
+	document.getElementById("onlybase").disabled = false;
 	document.getElementById("customammo").disabled = false;
 	document.getElementById("rank").disabled = false;
 	document.getElementById("sound").disabled = false;
@@ -659,6 +662,7 @@ function setParameterValues() {
 	rank = document.getElementById("rank").value;
 	loadoutPriceLimit = document.getElementById("priceLimit").value;
 	onlyShowWeapons = document.getElementById("onlyshowweapons").checked;
+	onlyBaseVariants = document.getElementById("onlybase").checked;
 }
 
 function generateWeapon() {
@@ -738,16 +742,29 @@ function generateAmmo(weapon){
 
 function filterAvailableWeapons(){
 	var candidates = new Array();
-	for (family of gunFamilies){
-		if (family.rank <= rank && family.minimumSize <= remainingSize) {
-			for (gun of family.guns){
-				if (gun.size <= remainingSize) {
-					if(gun.dualWield){
-						if (allowDualWield) {
-							candidates.push(gun)
+	if (onlyBaseVariants){
+		for(family of gunFamilies){
+			if(family.guns[0].size <= remainingSize){
+				candidates.push(family.guns[0])
+			}
+			if(family.guns[1].dualWield && family.guns[1].size <= remainingSize){
+				if (allowDualWield) {
+					candidates.push(family.guns[1])
+				}
+			}
+		}
+	}else {
+		for (family of gunFamilies){
+			if (family.rank <= rank && family.minimumSize <= remainingSize) {
+				for (gun of family.guns){
+					if (gun.size <= remainingSize) {
+						if(gun.dualWield){
+							if (allowDualWield) {
+								candidates.push(gun)
+							}
+						} else {
+							candidates.push(gun);
 						}
-					} else {
-						candidates.push(gun);
 					}
 				}
 			}
