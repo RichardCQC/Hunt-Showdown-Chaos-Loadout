@@ -10,7 +10,7 @@
   <meta name="author" content="RichardCQC">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="css/style.css?v=6">
-  <script src="js/script.js?v=26"></script>
+  <script src="js/script.js?v=27"></script>
   <script>
     window.onload = function() {
       setParameterValues();
@@ -56,6 +56,7 @@
         </div>
         <div class="changelog-title">Changelog</div>
         <ul>
+          <li>2025-12-21 - Updated for Murder Circus Encore.</li>
           <li>2025-03-30 - Updated for Garden of Witches Event.</li>
           <li>2025-02-17 - Added weapon only feature and fixed some bugs.</li>
           <li>2025-01-15 - Fixed small error for 1865 carbine.</li>
@@ -127,20 +128,28 @@
           <br>
           <div class="option">
             <label class="switch">
+              <input type="checkbox" id="includescarce" name="includescarce" checked/>
+              <span class="slider round"></span>
+            </label>
+            <label for="includeevent">Scarce weapon</label>
+          </div>
+          <br>
+          <div class="option">
+            <label class="switch">
               <input type="checkbox" id="quartermaster" name="quartermaster" />
               <span class="slider round"></span>
             </label>
             <label for="quartermaster">Quartermaster</label>
           </div>
           <br>
-          <div class="option">
+          <!--<div class="option" >
             <label class="switch">
               <input type="checkbox" id="gunrunner" name="gunrunner" />
               <span class="slider round"></span>
             </label>
             <label for="gunrunner">Gunrunner (event)</label>
           </div>
-          <br>
+          <br>-->
           <div class="option tnc">
             <label class="switch">
               <input type="checkbox" id="med" name="med"/>
@@ -337,6 +346,7 @@
   <img src="img/hammer.jpg" width="1" height="1"/>
   <img src="img/haymaker.jpg" width="1" height="1"/>
   <img src="img/hivebomb.jpg" width="1" height="1"/>
+  <img src="img/homestead.jpg" width="1" height="1"/>
   <img src="img/infantry.jpg" width="1" height="1"/>
   <img src="img/infantry_bay.jpg" width="1" height="1"/>
   <img src="img/infantry_snip.jpg" width="1" height="1"/>
@@ -438,6 +448,7 @@
   <img src="img/shot_sta_weak.jpg" width="1" height="1"/>
   <img src="img/shot_vit.jpg" width="1" height="1"/>
   <img src="img/shot_vit_weak.jpg" width="1" height="1"/>
+  <img src="img/shredder.jpg" width="1" height="1"/>
   <img src="img/slate.jpg" width="1" height="1"/>
   <img src="img/slate_rip.jpg" width="1" height="1"/>
   <img src="img/sparks.jpg" width="1" height="1"/>
@@ -458,6 +469,7 @@
   <img src="img/springfield_striker.jpg" width="1" height="1"/>
   <img src="img/spyglass.jpg" width="1" height="1"/>
   <img src="img/stickybomb.jpg" width="1" height="1"/>
+  <img src="img/tarrot.jpg" width="1" height="1"/>
   <img src="img/terminus.jpg" width="1" height="1"/>
   <img src="img/terminus_sho.jpg" width="1" height="1"/>
   <img src="img/throwing_axe.jpg" width="1" height="1"/>
@@ -480,6 +492,7 @@
   <img src="img/vetterli_dead.jpg" width="1" height="1"/>
   <img src="img/vetterli_mark.jpg" width="1" height="1"/>
   <img src="img/vetterli_sil.jpg" width="1" height="1"/>
+  <img src="img/wildland.jpg" width="1" height="1"/>
   <img src="img/ammo/a-c.png" width="1" height="1"/>
 	<img src="img/ammo/a-f.png" width="1" height="1"/>
 	<img src="img/ammo/a-p.png" width="1" height="1"/>
@@ -527,6 +540,7 @@
 	<img src="img/ammo/s-s.png" width="1" height="1"/>
 	<img src="img/ammo/s-sl.png" width="1" height="1"/>
 	<img src="img/ammo/s.png" width="1" height="1"/>
+  <img src="img/ammo/saw.png" width="1" height="1"/>
   <img src="img/ammo/sub.png" width="1" height="1"/>
  </div>
 </body>

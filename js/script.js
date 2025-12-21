@@ -5,7 +5,7 @@ var generateWeapon1 = true;
 var generateWeapon2 = true;
 var allowDualWield = true;
 var allowQuatermaster = false;
-var allowGunrunner = false;
+//var allowGunrunner = false;
 var allowDuplicateWeapons = true;
 var allowCustomAmmo = true;
 var customAmmoPercentage = 50;
@@ -14,6 +14,7 @@ var animation = true;
 var forceMedkit = false;
 var onlyShowWeapons = false;
 var onlyBaseVariants = false;
+var includescarce = true;
 var loadoutPriceLimit;
 
 
@@ -362,7 +363,22 @@ var gunFamilies = new Array(
 			new Gun(3, false, "Vetterli 71 Silencer", 120, "img/vetterli_sil.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/sub.png",10), new AmmoType("img/ammo/m-i.png", 40), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-h.png", 60)]),
 			new Gun(3, false, "Vetterli 71 Cyclone", 535, "img/vetterli_cyc.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/sub.png",10), new AmmoType("img/ammo/m-i.png", 40), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-h.png", 60)])
 		)
-	)	
+	),
+	new GunFamily(1, 3, new Array(
+			new Gun(3, false, "Homestead 78", 0, "img/homestead.jpg", false, [new AmmoType("img/ammo/s.png", 0), new AmmoType("img/ammo/s-s.png", 5), new AmmoType("img/ammo/s-d.png", 10), new AmmoType("img/ammo/s-p.png", 5), new AmmoType("img/ammo/s-sl.png", 65)]),
+			new Gun(3, false, "Homestead 78", 0, "img/homestead.jpg", false, [new AmmoType("img/ammo/s.png", 0), new AmmoType("img/ammo/s-s.png", 5), new AmmoType("img/ammo/s-d.png", 10), new AmmoType("img/ammo/s-p.png", 5), new AmmoType("img/ammo/s-sl.png", 65)])
+		)
+	),
+	new GunFamily(1, 3, new Array(
+			new Gun(3, false, "Wildland", 0, "img/wildland.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/sub.png",10), new AmmoType("img/ammo/m-p.png", 50), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-d.png", 50), new AmmoType("img/ammo/m-h.png", 60)]),
+			new Gun(3, false, "Wildland", 0, "img/wildland.jpg", false, [new AmmoType("img/ammo/m.png",0), new AmmoType("img/ammo/sub.png",10), new AmmoType("img/ammo/m-p.png", 50), new AmmoType("img/ammo/m-f.png", 50), new AmmoType("img/ammo/m-d.png", 50), new AmmoType("img/ammo/m-h.png", 60)])
+		)
+	),
+	new GunFamily(1, 3, new Array(
+			new Gun(3, false, "Shredder", 0, "img/shredder.jpg", false, [new AmmoType("img/ammo/saw.png",0)]),
+			new Gun(3, false, "Shredder", 0, "img/shredder.jpg", false, [new AmmoType("img/ammo/saw.png",0)])
+		)
+	)
 );
 
 var medkit = new Tool(1, "First Aid Kit", 30, "img/medkit.jpg");
@@ -420,7 +436,8 @@ var consumableList = new Array(
 	new Consumable(48, "Hive Bomb", 40, "img/hivebomb.jpg"),
 	new Consumable(50, "Flash Bomb", 25, "img/flashbomb.jpg"),
 	new Consumable(55, "Tool Box", 70, "img/toolbox.jpg"),
-	new Consumable(58, "Big Dynamite Bundle", 110, "img/dynamite_bun_big.jpg")
+	new Consumable(58, "Big Dynamite Bundle", 110, "img/dynamite_bun_big.jpg"),
+	new Consumable (1, "Tarrot Card", 0, "img/tarrot.jpg")
 );
 
 function randomizeSlots() {
@@ -500,7 +517,7 @@ function disableFormElements(){
 	document.getElementById("dup").disabled = true;
 	document.getElementById("med").disabled = true;
 	document.getElementById("quartermaster").disabled = true;
-	document.getElementById("gunrunner").disabled = true;
+	//document.getElementById("gunrunner").disabled = true;
 	document.getElementById("onlyshowweapons").disabled = true;
 	document.getElementById("onlybase").disabled = true;
 	document.getElementById("customammo").disabled = true;
@@ -515,7 +532,7 @@ function enableFormElements(){
 	document.getElementById("dup").disabled = false;
 	document.getElementById("med").disabled = false;
 	document.getElementById("quartermaster").disabled = false;
-	document.getElementById("gunrunner").disabled = false;
+	//document.getElementById("gunrunner").disabled = false;
 	document.getElementById("onlyshowweapons").disabled = false;
 	document.getElementById("onlybase").disabled = false;
 	document.getElementById("customammo").disabled = false;
@@ -633,9 +650,9 @@ function setMaxSize() {
 		maxSize = 4;
 	}
 
-	if (allowGunrunner) {
-		maxSize = 6
-	}
+	//if (allowGunrunner) {
+	//	maxSize = 6
+	//}
 }
 
 function setParameterValues() {
@@ -654,7 +671,7 @@ function setParameterValues() {
 	allowDualWield = document.getElementById("dual").checked;
 	forceMedkit = document.getElementById("med").checked;
 	allowQuatermaster = document.getElementById("quartermaster").checked;
-	allowGunrunner = document.getElementById("gunrunner").checked;
+	//allowGunrunner = document.getElementById("gunrunner").checked;
 	allowDuplicateWeapons = document.getElementById("dup").checked;
 	allowCustomAmmo = document.getElementById("customammo").checked;
 	sound = document.getElementById("sound").checked;
@@ -663,6 +680,7 @@ function setParameterValues() {
 	loadoutPriceLimit = document.getElementById("priceLimit").value;
 	onlyShowWeapons = document.getElementById("onlyshowweapons").checked;
 	onlyBaseVariants = document.getElementById("onlybase").checked;
+	includescarce = document.getElementById("includescarce").checked;
 }
 
 function generateWeapon() {
@@ -745,11 +763,15 @@ function filterAvailableWeapons(){
 	if (onlyBaseVariants){
 		for(family of gunFamilies){
 			if(family.guns[0].size <= remainingSize){
-				candidates.push(family.guns[0])
+				if (includescarce || family.guns[0].price > 0){
+					candidates.push(family.guns[0])
+				}
 			}
 			if(family.guns[1].dualWield && family.guns[1].size <= remainingSize){
 				if (allowDualWield) {
-					candidates.push(family.guns[1])
+					if (includescarce || family.guns[1].price > 0){
+						candidates.push(family.guns[1])
+					}
 				}
 			}
 		}
@@ -757,13 +779,15 @@ function filterAvailableWeapons(){
 		for (family of gunFamilies){
 			if (family.rank <= rank && family.minimumSize <= remainingSize) {
 				for (gun of family.guns){
-					if (gun.size <= remainingSize) {
-						if(gun.dualWield){
-							if (allowDualWield) {
-								candidates.push(gun)
+					if (includescarce || gun.price > 0) {
+						if (gun.size <= remainingSize) {
+							if(gun.dualWield){
+								if (allowDualWield) {
+									candidates.push(gun)
+								}
+							} else {
+								candidates.push(gun);
 							}
-						} else {
-							candidates.push(gun);
 						}
 					}
 				}
