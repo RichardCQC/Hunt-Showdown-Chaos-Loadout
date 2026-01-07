@@ -378,6 +378,11 @@ var gunFamilies = new Array(
 			new Gun(3, false, "Shredder", 0, "img/shredder.jpg", false, [new AmmoType("img/ammo/saw.png",0)]),
 			new Gun(3, false, "Shredder", 0, "img/shredder.jpg", false, [new AmmoType("img/ammo/saw.png",0)])
 		)
+	),
+	new GunFamily(1, 2, new Array(
+			new Gun(2, false, "Flame Rifle", 0, "img/flamerifle.jpg", false, [new AmmoType("img/ammo/f.png",0)]),
+			new Gun(2, false, "Flame Rifle", 0, "img/flamerifle.jpg", false, [new AmmoType("img/ammo/f.png",0)])
+		)
 	)
 );
 
