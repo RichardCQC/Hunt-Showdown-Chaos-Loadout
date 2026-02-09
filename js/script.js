@@ -412,7 +412,7 @@ var toolList = new Array(
 );
 
 var consumableList = new Array(
-	new Consumable(1, "Dark Dynamite Satchel", 100, "img/dynamite_dark.jpg"),
+	new Consumable(46, "Dark Dynamite Satchel", 100, "img/dynamite_dark.jpg"),
 	new Consumable(1, "Ammo Box", 65, "img/ammo_box.jpg"),
 	new Consumable(1, "Fire Bomb", 30, "img/firebomb.jpg"),
 	new Consumable(1, "Medical Pack", 35, "img/medicalpack.jpg"),
