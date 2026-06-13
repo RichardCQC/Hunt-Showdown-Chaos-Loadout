@@ -95,7 +95,7 @@ html, body {
 }
 
 .loadout :checked + label img {
-  box-shadow: 0 0 10px #216942;
+  box-shadow: 0 0 10px #395A7F;
 }
 
 .loadout div {
@@ -104,26 +104,26 @@ html, body {
 }
 
 button.red-button {
-    background: #216942; 
-    border: 1px solid #216942;
+    background: #395A7F; 
+    border: 1px solid #395A7F;
     color: white;
     line-height: 25px;
     width: 200px;
     padding: 5px 10px;
     border-radius: 2px;
     outline: none;
-    text-shadow: 0 1px 0 #61b186;
+    text-shadow: 0 1px 0 #6E9FC1;
 
 }
 
 button.red-button:hover {
-     background: #20a15c;
-     border: 1px solid #20a15c;
+     background: #A3CAE9;
+     border: 1px solid #A3CAE9;
 }
 
 button.red-button:active {
-    background: #216942;
-    border: 1px solid #216942;
+    background: #395A7F;
+    border: 1px solid #395A7F;
 }
 
 button:disabled {
@@ -170,6 +170,8 @@ img.hover1 {
 	top: 13px;
 	cursor: pointer;
 	border: 1px solid black;
+  background-color:#395A7F;
+  border-radius: 3px;
 }
 
 img.hover2 {
@@ -180,6 +182,8 @@ img.hover2 {
 	top: 13px;
 	cursor: pointer;
 	border: 1px solid black;
+  background-color:#395A7F;
+  border-radius: 3px;
 }
 
 img.overlay1 {
@@ -250,11 +254,11 @@ img.hover1:hover, img.hover2:hover {
 }
 
 input:checked + .slider {
-  background-color: #216942;
+  background-color: #395A7F;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #216942;
+  box-shadow: 0 0 1px #395A7F;
 }
 
 input:checked + .slider:before {
@@ -274,7 +278,7 @@ input:checked + .slider:before {
 }
 
 input[type="number"] {
-  background-color: #216942;
+  background-color: #395A7F;
   color: white;
   border-style: solid;
   border-color: black;
@@ -359,15 +363,15 @@ div#under > label {
 }
 
 .linkbutton {
-    background: #216942; 
-    border: 1px solid #216942;
+    background: #395A7F; 
+    border: 1px solid #395A7F;
     color: white;
     line-height: 25px;
     width: 200px;
     padding: 5px 10px;
     border-radius: 10px;
     outline: none;
-    text-shadow: 0 1px 0 #61b186;
+    text-shadow: 0 1px 0 #6E9FC1;
     text-decoration: none;
 }
 
@@ -387,7 +391,7 @@ input[type="range"] {
 }
 
 input[type="range"] {
-	color: #216942;
+	color: #395A7F;
 	--thumb-height: 0.700em;
 	--track-height: 0.125em;
 	--track-color: rgba(0, 0, 0, 0.2);
@@ -397,7 +401,7 @@ input[type="range"] {
 }
 
 input[type="range"] {
-	color: #216942;
+	color: #395A7F;
 	--track-color: rgba(255, 255, 255, 0.1);
 }
 

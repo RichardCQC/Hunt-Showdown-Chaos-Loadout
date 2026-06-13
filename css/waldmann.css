@@ -170,6 +170,8 @@ img.hover1 {
 	top: 13px;
 	cursor: pointer;
 	border: 1px solid black;
+  background-color:#952230;
+  border-radius: 3px;
 }
 
 img.hover2 {
@@ -180,6 +182,8 @@ img.hover2 {
 	top: 13px;
 	cursor: pointer;
 	border: 1px solid black;
+  background-color:#952230;
+  border-radius: 3px;
 }
 
 img.overlay1 {

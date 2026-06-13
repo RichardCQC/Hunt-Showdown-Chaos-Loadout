@@ -9,8 +9,8 @@
   <meta name="description" content="A random loadout generator for the game Hunt : Showdown.">
   <meta name="author" content="RichardCQC">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="css/waldmann.css">
-  <script src="js/script.js?v=29"></script>
+  <link rel="stylesheet" href="css/waldmann.css?v=2">
+  <script src="js/script.js?v=30"></script>
   <script>
     window.onload = function() {
       setParameterValues();
@@ -40,7 +40,7 @@
         <div class="changelog-title">UI Tips</div>
         <div>
           <br>
-          Clicking a slot will remove the red border around it.<br>
+          Clicking a slot will remove the border around it.<br>
           The randomizer will no longer generate that slot.<br><br>
           Hovering over a slot will reveal two buttons :
           <ul>
@@ -58,7 +58,10 @@
         </div>
         <div class="changelog-title">Changelog</div>
         <ul>
-          <li>2026-01-07 - Updated for Murder Circus Encore.</li>
+          <li>2026-06-13 - Updated for Road to Hell (2.8)</li>
+          <li>2026-02-09 - Fixed Dark Dynamite level requirement.</li>
+          <li>2026-01-07 - Added Flame Rifle</li>
+          <li>2025-12-21 - Updated for Murder Circus Encore.</li>
           <li>2025-03-30 - Updated for Garden of Witches Event.</li>
           <li>2025-02-17 : The Waldmann Page Created.</li>
         </ul>
@@ -131,7 +134,7 @@
               <input type="checkbox" id="includescarce" name="includescarce" checked/>
               <span class="slider round"></span>
             </label>
-            <label for="includeevent">Include scarce weapon</label>
+            <label for="includeevent">Scarce weapon</label>
           </div>
           <br>
           <div class="option">
@@ -142,20 +145,28 @@
             <label for="quartermaster">Quartermaster</label>
           </div>
           <br>
-          <!--<div class="option">
-            <label class="switch">
-              <input type="checkbox" id="gunrunner" name="gunrunner" />
-              <span class="slider round"></span>
-            </label>
-            <label for="gunrunner">Gunrunner (event)</label>
-          </div>
-          <br>-->
-          <div class="option tnc">
+          <div class="option">
             <label class="switch">
               <input type="checkbox" id="med" name="med"/>
               <span class="slider round"></span>
             </label>
             <label for="med">Force Medkit</label>
+          </div>
+          <br>
+          <div class="option">
+            <label class="switch">
+              <input type="checkbox" id="forcemelee" name="forcemelee"/>
+              <span class="slider round"></span>
+            </label>
+            <label for="med">Force Melee Tool</label>
+          </div>
+          <br>
+          <div class="option">
+            <label class="switch">
+              <input type="checkbox" id="limitmelee" name="limitmelee"/>
+              <span class="slider round"></span>
+            </label>
+            <label for="med">Limit to 1 Melee Tool</label>
           </div>
           <br>
           <div class="option">
@@ -192,8 +203,8 @@
             <div>
               <input type="checkbox" id="weapon1" checked="true" />
               <label class="noselect" for="weapon1"><img id="w1" src="img/emptyLarge.jpg"/></label>
-              <img class="hover1" src="img/rerollred.jpg" onclick="reroll('weapon1')" />
-              <img class="hover2" src="img/previousred.jpg" onclick="previous('weapon1')" />
+              <img class="hover1" src="img/reroll.png" onclick="reroll('weapon1')" />
+              <img class="hover2" src="img/previous.png" onclick="previous('weapon1')" />
               <img class="overlay1" id="w1a1" src = "img/ammo/none.png"/>
               <img class="overlay2" id="w1a2" src = "img/ammo/none.png"/>
             </div>
@@ -202,56 +213,55 @@
             <div>
               <input type="checkbox" id="weapon2" checked="true" />
               <label class="noselect" for="weapon2"><img id="w2" src="img/emptySmall.jpg"/></label>
-              <img class="hover1" src="img/rerollred.jpg" onclick="reroll('weapon2')" />
-              <img class="hover2" src="img/previousred.jpg" onclick="previous('weapon2')" />
+              <img class="hover1" src="img/reroll.png" onclick="reroll('weapon2')" />
+              <img class="hover2" src="img/previous.png" onclick="previous('weapon2')" />
               <img class="overlay1" id="w2a1" src = "img/ammo/none.png"/>
               <img class="overlay2" id="w2a2" src = "img/ammo/none.png"/>
             </div>
           </li>
-          <label class="tnc">Tools</label>
+          <label class="tnc">Tools & Consumables</label>
           <li>
             <div class="tnc">
-              <input type="checkbox" class="tool" id="tool1" checked />
-              <label class="noselect" for="tool1"><img id="t1" src="img/emptySmall.jpg"/></label> 
-              <img class="hover1" src="img/rerollred.jpg" onclick="reroll('tool1')" />
+              <input type="checkbox" class="tool" id="tnc0" checked />
+              <label class="noselect" for="tnc0"><img id="tc0" src="img/emptySmall.jpg"/></label> 
+              <img class="hover1" src="img/reroll.png" onclick="reroll('tnc0')" />
             </div>
             <div class="tnc">
-              <input type="checkbox" class="tool" id="tool2" checked />
-              <label class="noselect" for="tool2"><img id="t2" src="img/emptySmall.jpg"/></label> 
-              <img class="hover1" src="img/rerollred.jpg" onclick="reroll('tool2')" />
+              <input type="checkbox" class="tool" id="tnc1" checked />
+              <label class="noselect" for="tnc1"><img id="tc1" src="img/emptySmall.jpg"/></label> 
+              <img class="hover1" src="img/reroll.png" onclick="reroll('tnc1')" />
             </div>
             <div class="tnc">
-              <input type="checkbox" class="tool" id="tool3" checked />
-              <label class="noselect" for="tool3"><img id="t3" src="img/emptySmall.jpg"/></label>
-              <img class="hover1" src="img/rerollred.jpg" onclick="reroll('tool3')" />
+              <input type="checkbox" class="tool" id="tnc2" checked />
+              <label class="noselect" for="tnc2"><img id="tc2" src="img/emptySmall.jpg"/></label>
+              <img class="hover1" src="img/reroll.png" onclick="reroll('tnc2')" />
             </div>
             <div class="tnc">
-              <input type="checkbox" class="tool" id="tool4" checked />
-              <label class="noselect" for="tool4"><img id="t4" src="img/emptySmall.jpg"/></label> 
-              <img class="hover1" src="img/rerollred.jpg" onclick="reroll('tool4')" />
+              <input type="checkbox" class="tool" id="tnc3" checked />
+              <label class="noselect" for="tnc3"><img id="tc3" src="img/emptySmall.jpg"/></label> 
+              <img class="hover1" src="img/reroll.png" onclick="reroll('tnc3')" />
             </div>
           </li>
-          <label class="tnc">Consumables</label>
           <li>
             <div class="tnc">
-              <input type="checkbox" id="consumable1" checked />
-              <label class="noselect" for="consumable1"><img id="c1" src="img/emptySmall.jpg"/></label>
-              <img class="hover1" src="img/rerollred.jpg" onclick="reroll('consumable1')" />
+              <input type="checkbox" id="tnc4" checked />
+              <label class="noselect" for="tnc4"><img id="tc4" src="img/emptySmall.jpg"/></label>
+              <img class="hover1" src="img/reroll.png" onclick="reroll('tnc4')" />
             </div>
             <div class="tnc">
-              <input type="checkbox" id="consumable2" checked />
-              <label class="noselect" for="consumable2"><img id="c2" src="img/emptySmall.jpg"/></label> 
-              <img class="hover1" src="img/rerollred.jpg" onclick="reroll('consumable2')" />
+              <input type="checkbox" id="tnc5" checked />
+              <label class="noselect" for="tnc5"><img id="tc5" src="img/emptySmall.jpg"/></label> 
+              <img class="hover1" src="img/reroll.png" onclick="reroll('tnc5')" />
             </div>
             <div class="tnc">
-              <input type="checkbox" id="consumable3" checked />
-              <label class="noselect" for="consumable3"><img id="c3" src="img/emptySmall.jpg"/></label> 
-              <img class="hover1" src="img/rerollred.jpg" onclick="reroll('consumable3')" />
+              <input type="checkbox" id="tnc6" checked />
+              <label class="noselect" for="tnc6"><img id="tc6" src="img/emptySmall.jpg"/></label> 
+              <img class="hover1" src="img/reroll.png" onclick="reroll('tnc6')" />
             </div>
             <div class="tnc">
-              <input type="checkbox" id="consumable4" checked />
-              <label class="noselect" for="consumable4"><img id="c4" src="img/emptySmall.jpg"/></label> 
-              <img class="hover1" src="img/rerollred.jpg" onclick="reroll('consumable4')" />
+              <input type="checkbox" id="tnc7" checked />
+              <label class="noselect" for="tnc7"><img id="tc7" src="img/emptySmall.jpg"/></label> 
+              <img class="hover1" src="img/reroll.png" onclick="reroll('tnc7')" />
             </div>
           </li>
           <div id="under">
@@ -271,7 +281,6 @@
   <img src="img/auto5.jpg" width="1" height="1"/>
   <img src="img/axe.jpg" width="1" height="1"/>
   <img src="img/banner.jpg" width="1" height="1"/>
-  <img src="img/bannerwald.jpg" width="1" height="1"/>
   <img src="img/bannerhome.jpg" width="1" height="1"/>
   <img src="img/bannerhometext.png" width="1" height="1"/>
   <img src="img/bat.jpg" width="1" height="1"/>
@@ -293,6 +302,7 @@
   <img src="img/bornheim_sil.jpg" width="1" height="1"/>
   <img src="img/bornheim_sil_dual.jpg" width="1" height="1"/>
   <img src="img/bow.jpg" width="1" height="1"/>
+  <img src="img/cavalry.jpg" width="1" height="1"/>
   <img src="img/centennial.jpg" width="1" height="1"/>
   <img src="img/centennial_sho.jpg" width="1" height="1"/>
   <img src="img/centennial_sho_sil.jpg" width="1" height="1"/>
@@ -334,10 +344,10 @@
   <img src="img/emptyLarge.jpg" width="1" height="1"/>
   <img src="img/emptyMedium.jpg" width="1" height="1"/>
   <img src="img/emptySmall.jpg" width="1" height="1"/>
+  <img src="img/flamerifle.jpg" width="1" height="1"/>
   <img src="img/firebomb.jpg" width="1" height="1"/>
   <img src="img/firebomb_hell.jpg" width="1" height="1"/>
   <img src="img/firebomb_liquid.jpg" width="1" height="1"/>
-  <img src="img/flamerifle.jpg" width="1" height="1"/>
   <img src="img/flare.jpg" width="1" height="1"/>
   <img src="img/flashbomb.jpg" width="1" height="1"/>
   <img src="img/fragbomb.jpg" width="1" height="1"/>
@@ -416,14 +426,12 @@
   <img src="img/pax_true.jpg" width="1" height="1"/>
   <img src="img/pax_true_dual.jpg" width="1" height="1"/>
   <img src="img/poisonbomb.jpg" width="1" height="1"/>
-  <img src="img/previous.jpg" width="1" height="1"/>
-  <img src="img/previousred.jpg" width="1" height="1"/>
+  <img src="img/previous.png" width="1" height="1"/>
   <img src="img/ranger.jpg" width="1" height="1"/>
   <img src="img/ranger_aper.jpg" width="1" height="1"/>
   <img src="img/ranger_swif.jpg" width="1" height="1"/>
   <img src="img/ranger_talon.jpg" width="1" height="1"/>
-  <img src="img/reroll.jpg" width="1" height="1"/>
-  <img src="img/rerollred.jpg" width="1" height="1"/>
+  <img src="img/reroll.png" width="1" height="1"/>
   <img src="img/rival.jpg" width="1" height="1"/>
   <img src="img/rival_mace.jpg" width="1" height="1"/>
   <img src="img/rival_sho.jpg" width="1" height="1"/>
